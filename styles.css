@@ -416,25 +416,27 @@ body {
 
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     justify-items: center;
     align-items: start;
 }
 
-/* For exactly 4 cards, create a better layout */
-@media (min-width: 768px) {
+/* For tablets and smaller screens */
+@media (max-width: 1024px) {
     .about-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 800px;
-        margin: 0 auto;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
     }
 }
 
-@media (min-width: 1200px) {
+/* For mobile screens */
+@media (max-width: 768px) {
     .about-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3rem;
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+        gap: 2rem;
     }
 }
 
