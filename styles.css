@@ -777,7 +777,7 @@ body {
 
 /* Hosting Section */
 .hosting-section {
-    margin-top: 0;
+    margin: 0;
     padding: 4rem 0;
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     position: relative;
@@ -785,10 +785,11 @@ body {
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    margin-bottom: -4rem;
-    z-index: 1;
+    box-sizing: border-box;
 }
 
+/* Remove background pattern that might cause issues */
+/*
 .hosting-section::before {
     content: '';
     position: absolute;
@@ -799,6 +800,7 @@ body {
     background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>') repeat;
     opacity: 0.5;
 }
+*/
 
 .hosting-section .container {
     position: relative;
@@ -973,11 +975,18 @@ body {
 
 @media (min-width: 768px) {
     .hosting-section::after {
-        display: block;
+        display: none;
     }
 }
 
 @media (max-width: 767px) {
+    .hosting-section {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        overflow-x: hidden;
+    }
+    
     .hosting-section::after {
         display: none;
     }
@@ -987,12 +996,21 @@ body {
     }
 }
 
+/* Additional fix for specific devices */
+@media (max-width: 480px) {
+    .hosting-section {
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        width: 100vw;
+        position: relative;
+        overflow: hidden;
+    }
+}
+
 /* Services Section */
 .services {
     padding: 4rem 0;
     background: #f9fafb;
-    position: relative;
-    z-index: 2;
 }
 
 .services-grid {
