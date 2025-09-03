@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyle's Design Workshop - Professional Web Design Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>Kyle's Design Workshop</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Animated Background Grid -->
+        <div class="hero-grid"></div>
+        
+        <!-- Floating Background Elements -->
+        <div class="hero-bg-elements">
+            <!-- Floating Code Brackets -->
+            <div class="floating-element floating-bracket">&lt;/&gt;</div>
+            <div class="floating-element floating-bracket">{}</div>
+            <div class="floating-element floating-bracket">[]</div>
+            <div class="floating-element floating-bracket">&lt;&gt;</div>
+            
+            <!-- Floating Geometric Shapes -->
+            <div class="floating-element floating-shape shape-1"></div>
+            <div class="floating-element floating-shape square shape-2"></div>
+            <div class="floating-element floating-shape shape-3"></div>
+            <div class="floating-element floating-shape square shape-4"></div>
+            <div class="floating-element floating-shape triangle shape-5"></div>
+            <div class="floating-element floating-shape shape-6"></div>
+            
+            <!-- Floating Code Snippets -->
+            <div class="floating-element floating-code code-1">const developer = 'Kyle';</div>
+            <div class="floating-element floating-code code-2">function createAmazingWebsite() { return 'success'; }</div>
+            <div class="floating-element floating-code code-3">// Building digital dreams...</div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Bringing Your Digital Vision to Life</h1>
+                <p class="hero-description">
+                    Professional web design and development services that transform your business ideas into stunning, 
+                    functional websites that engage customers and drive results.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Kyle's Design Workshop?</h2>
+                <p>Crafting digital experiences that make your business stand out</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Modern & Fast</h3>
+                    <p>I build lightning-fast websites using the latest technologies and best practices for optimal performance.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Every website I create looks perfect and functions flawlessly across all devices.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimized</h3>
+                    <p>Built-in SEO optimization ensures your website ranks well on search engines.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Collaborative Process</h3>
+                    <p>I work closely with you throughout the entire process, ensuring the final product matches your vision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Recent Work</h2>
+                <p>Take a look at some of the websites I've designed and developed</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="openModal('modal1')">
+                    <div class="portfolio-image">
+                        <img src="portfolio1-light.jpg.png" alt="Finsweet Business Website">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span>View Full Site</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Finsweet Business Solutions</h3>
+                        <p>Modern corporate website with clean design and professional layout</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Business</span>
+                            <span class="tag">Corporate</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" onclick="openModal('modal2')">
+                    <div class="portfolio-image">
+                        <img src="portfolio2.jpg.png" alt="Church Website">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span>View Full Site</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Cabin Missionary Baptist Church</h3>
+                        <p>Community-focused church website with sermon integration and event management</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Community</span>
+                            <span class="tag">Non-Profit</span>
+                            <span class="tag">Content Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" onclick="openModal('modal3')">
+                    <div class="portfolio-image">
+                        <img src="portfolio3.jpg.png" alt="Media Production Website">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span>View Full Site</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>NView Media Production</h3>
+                        <p>Creative media company website showcasing video production services</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Creative</span>
+                            <span class="tag">Media</span>
+                            <span class="tag">Portfolio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transparent Pricing</h2>
+                <p>Competitive rates for professional web development services</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic Website</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">899</span>
+                        </div>
+                        <p class="price-description">Perfect for small businesses</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Up to 5 pages</li>
+                            <li><i class="fas fa-check"></i>Responsive design</li>
+                            <li><i class="fas fa-check"></i>Basic SEO setup</li>
+                            <li><i class="fas fa-check"></i>Free domain (1 year)</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Best Value</div>
+                    <div class="pricing-header">
+                        <h3>Professional Website</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">1,499</span>
+                        </div>
+                        <p class="price-description">Best for growing businesses</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Up to 10 pages</li>
+                            <li><i class="fas fa-check"></i>Custom design</li>
+                            <li><i class="fas fa-check"></i>Advanced SEO optimization</li>
+                            <li><i class="fas fa-check"></i>Free domain (1 year)</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Premium Website</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">2,299</span>
+                        </div>
+                        <p class="price-description">Complete digital solution</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Unlimited pages</li>
+                            <li><i class="fas fa-check"></i>Custom functionality</li>
+                            <li><i class="fas fa-check"></i>Advanced animations</li>
+                            <li><i class="fas fa-check"></i>Free domain (1 year)</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-note">
+                <p><i class="fas fa-info-circle"></i> All packages include mobile optimization, domain name (if needed), and basic training. Custom quotes available for unique requirements.</p>
+            </div>
+            
+            <!-- Hosting Plans -->
+            <div class="hosting-section">
+                <div class="section-header">
+                    <h2>Website Hosting</h2>
+                    <p>Complete hosting management - we handle everything</p>
+                </div>
+                <div class="hosting-single">
+                    <div class="hosting-card featured">
+                        <div class="hosting-header">
+                            <h3>Full Management Hosting</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">49.99</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p class="price-description">We handle everything so you don't have to</p>
+                        </div>
+                        <div class="hosting-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i>Complete hosting management</li>
+                                <li><i class="fas fa-check"></i>Regular updates & maintenance</li>
+                                <li><i class="fas fa-check"></i>24/7 monitoring & support</li>
+                                <li><i class="fas fa-check"></i>SSL certificate & security</li>
+                                <li><i class="fas fa-check"></i>Daily backups & recovery</li>
+                                <li><i class="fas fa-check"></i>Performance optimization</li>
+                            </ul>
+                        </div>
+                        <div class="hosting-footer">
+                            <a href="#contact" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Services I Offer</h2>
+                <p>Comprehensive web solutions tailored to your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Custom Web Design</h3>
+                    <p>Unique, tailor-made websites that reflect your brand identity and engage your target audience effectively.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Frontend Development</h3>
+                    <p>Modern, responsive websites built with the latest technologies for optimal performance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Optimization</h3>
+                    <p>Ensure your website looks and functions perfectly on all mobile devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Work Together</h2>
+                <p>Ready to bring your website vision to life? Get in touch!</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get Started Today</h3>
+                    <p>Whether you need a brand new website or want to redesign your existing one, I'm here to help you create something amazing.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@kylesdesignworkshop.com</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-clock"></i>
+                            <span>Available Mon-Fri, 9AM-6PM EST</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="">Select a Service</option>
+                            <option value="custom-design">Custom Web Design</option>
+                            <option value="frontend-dev">Frontend Development</option>
+                            <option value="mobile-optimization">Mobile Optimization</option>
+                            <option value="consultation">Free Consultation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Kyle's Design Workshop</span>
+                </div>
+                <p>Creating beautiful, functional websites that help businesses thrive in the digital world.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kyle's Design Workshop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals for Portfolio Items -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>Finsweet Business Solutions</h2>
+                <p>Modern corporate website with clean design</p>
+            </div>
+            <div class="modal-body">
+                <div class="version-selector">
+                    <button class="version-btn active" onclick="showVersion('light')">Light Version</button>
+                    <button class="version-btn" onclick="showVersion('dark')">Dark Version</button>
+                </div>
+                <div class="modal-scroll-container">
+                    <img id="portfolio1-light" src="portfolio1-light.jpg.png" alt="Finsweet Light Version" class="modal-image active">
+                    <img id="portfolio1-dark" src="portfolio1-dark.jpg.png" alt="Finsweet Dark Version" class="modal-image">
+                </div>
+                <div class="project-details">
+                    <h3>Project Details</h3>
+                    <p>A comprehensive business website featuring a clean, professional design with both light and dark theme options. The site includes service showcases, client testimonials, and a modern contact system.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>Cabin Missionary Baptist Church</h2>
+                <p>Community-focused church website</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-scroll-container">
+                    <img src="portfolio2.jpg.png" alt="Church Website" class="modal-image">
+                </div>
+                <div class="project-details">
+                    <h3>Project Details</h3>
+                    <p>A welcoming church website designed to connect the community with spiritual resources. Features include sermon streaming, event calendars, and inspirational content sections.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>NView Media Production</h2>
+                <p>Creative media company showcase</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-scroll-container">
+                    <img src="portfolio3.jpg.png" alt="Media Production Website" class="modal-image">
+                </div>
+                <div class="project-details">
+                    <h3>Project Details</h3>
+                    <p>A dynamic media production website featuring a dark theme with vibrant blue accents. The site showcases video production services, client work, and includes interactive portfolio sections.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

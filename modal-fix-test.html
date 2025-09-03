@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modal Image Fix Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        
+        /* Simplified Modal Styles */
+        .test-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .test-modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 20px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+        }
+
+        .test-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #333;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: #f1f5f9;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .test-scroll-container {
+            max-height: 60vh;
+            overflow-y: auto;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .test-image {
+            width: 100%;
+            height: auto;
+            display: block !important;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        
+        .button {
+            background: #6366f1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        
+        .button:hover {
+            background: #4f46e5;
+        }
+        
+        .status {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            color: #0c4a6e;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Modal Image Fix Test</h1>
+    
+    <div class="status">
+        <strong>Goal:</strong> Test if images display properly in a simplified modal structure.
+    </div>
+    
+    <h3>Click to Test Each Modal:</h3>
+    <button class="button" onclick="openTestModal('test1')">Test Finsweet Light</button>
+    <button class="button" onclick="openTestModal('test2')">Test Church</button>
+    <button class="button" onclick="openTestModal('test3')">Test Media Production</button>
+    
+    <div id="results" style="margin-top: 20px;"></div>
+
+    <!-- Simplified Test Modals -->
+    <div id="test1" class="test-modal">
+        <div class="test-modal-content">
+            <span class="test-close" onclick="closeTestModal('test1')">&times;</span>
+            <h2>Finsweet Business Solutions (Light)</h2>
+            <div class="test-scroll-container">
+                <img src="portfolio1-light.jpg.png" alt="Finsweet Light" class="test-image" 
+                     onload="reportImageStatus('test1', true)" 
+                     onerror="reportImageStatus('test1', false)">
+            </div>
+        </div>
+    </div>
+
+    <div id="test2" class="test-modal">
+        <div class="test-modal-content">
+            <span class="test-close" onclick="closeTestModal('test2')">&times;</span>
+            <h2>Cabin Missionary Baptist Church</h2>
+            <div class="test-scroll-container">
+                <img src="portfolio2.jpg.png" alt="Church Website" class="test-image"
+                     onload="reportImageStatus('test2', true)" 
+                     onerror="reportImageStatus('test2', false)">
+            </div>
+        </div>
+    </div>
+
+    <div id="test3" class="test-modal">
+        <div class="test-modal-content">
+            <span class="test-close" onclick="closeTestModal('test3')">&times;</span>
+            <h2>NView Media Production</h2>
+            <div class="test-scroll-container">
+                <img src="portfolio3.jpg.png" alt="Media Production" class="test-image"
+                     onload="reportImageStatus('test3', true)" 
+                     onerror="reportImageStatus('test3', false)">
+            </div>
+        </div>
+    </div>
+
+    <p><a href="index.html" style="background: #6366f1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">← Back to Main Site</a></p>
+
+    <script>
+        function openTestModal(modalId) {
+            console.log('Opening test modal:', modalId);
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                
+                // Add status update
+                updateResults(`✅ Modal ${modalId} opened successfully`);
+            }
+        }
+
+        function closeTestModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                updateResults(`Modal ${modalId} closed`);
+            }
+        }
+
+        function reportImageStatus(modalId, success) {
+            if (success) {
+                console.log(`✅ Image in ${modalId} loaded successfully`);
+                updateResults(`✅ Image in ${modalId} loaded and displayed!`);
+            } else {
+                console.error(`❌ Image in ${modalId} failed to load`);
+                updateResults(`❌ Image in ${modalId} failed to load`);
+            }
+        }
+
+        function updateResults(message) {
+            const results = document.getElementById('results');
+            results.innerHTML += `<div style="padding: 8px; border-left: 3px solid #6366f1; margin: 5px 0; background: #f8fafc;">${message}</div>`;
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('test-modal')) {
+                closeTestModal(e.target.id);
+            }
+        });
+
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.test-modal[style*="block"]');
+                if (activeModal) {
+                    closeTestModal(activeModal.id);
+                }
+            }
+        });
+
+        updateResults('Test page loaded. Click buttons above to test modals.');
+    </script>
+</body>
+</html>

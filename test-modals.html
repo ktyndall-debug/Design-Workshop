@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Test - Kyle's Design Workshop</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-button { 
+            background: #6366f1; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 10px;
+        }
+        .test-button:hover { background: #4f46e5; }
+        
+        /* Basic Modal Styles for Testing */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #333;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close:hover {
+            background: #f1f5f9;
+            border-radius: 50%;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+
+        .debug-info {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #6366f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Modal Functionality Test</h1>
+    <div class="debug-info">
+        <p><strong>Debug Mode:</strong> Open your browser's Developer Tools (F12) and check the Console tab to see debug messages.</p>
+    </div>
+    
+    <h3>Test Modal Opening:</h3>
+    <button class="test-button" onclick="openModal('modal1')">Open Finsweet Modal</button>
+    <button class="test-button" onclick="openModal('modal2')">Open Church Modal</button>
+    <button class="test-button" onclick="openModal('modal3')">Open Media Modal</button>
+    
+    <h3>Current Status:</h3>
+    <div id="status">Ready to test...</div>
+
+    <!-- Test Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Finsweet Business Solutions</h2>
+            <p>This is a test modal. If you can see this, modal1 is working!</p>
+            <img src="portfolio1-light.jpg.png" alt="Test Image" class="modal-image" 
+                 onload="updateStatus('Modal 1 image loaded ✅')" 
+                 onerror="updateStatus('Modal 1 image failed to load ❌')">
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cabin Missionary Baptist Church</h2>
+            <p>This is a test modal. If you can see this, modal2 is working!</p>
+            <img src="portfolio2.jpg.png" alt="Test Image" class="modal-image"
+                 onload="updateStatus('Modal 2 image loaded ✅')" 
+                 onerror="updateStatus('Modal 2 image failed to load ❌')">
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>NView Media Production</h2>
+            <p>This is a test modal. If you can see this, modal3 is working!</p>
+            <img src="portfolio3.jpg.png" alt="Test Image" class="modal-image"
+                 onload="updateStatus('Modal 3 image loaded ✅')" 
+                 onerror="updateStatus('Modal 3 image failed to load ❌')">
+        </div>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="index.html" style="background: #6366f1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">← Back to Main Site</a>
+    </p>
+
+    <script>
+        function updateStatus(message) {
+            const status = document.getElementById('status');
+            status.innerHTML += '<br>' + message;
+        }
+
+        // Modal functionality (same as main site)
+        function openModal(modalId) {
+            console.log('Opening modal:', modalId);
+            updateStatus(`Attempting to open ${modalId}...`);
+            
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                console.log('Modal opened successfully');
+                updateStatus(`${modalId} opened successfully ✅`);
+            } else {
+                console.error('Modal not found:', modalId);
+                updateStatus(`${modalId} not found ❌`);
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                updateStatus(`${modalId} closed`);
+            }
+        }
+
+        // Close modal when clicking outside or on close button
+        document.addEventListener('click', function(e) {
+            console.log('Click detected on:', e.target.className);
+            
+            if (e.target.classList.contains('close')) {
+                console.log('Close button clicked');
+                const modal = e.target.closest('.modal');
+                if (modal) {
+                    console.log('Closing modal:', modal.id);
+                    closeModal(modal.id);
+                }
+            }
+            
+            if (e.target.classList.contains('modal')) {
+                console.log('Modal background clicked');
+                closeModal(e.target.id);
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.modal[style*="block"]');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        });
+
+        updateStatus('Test page loaded. Click buttons above to test modals.');
+    </script>
+</body>
+</html>

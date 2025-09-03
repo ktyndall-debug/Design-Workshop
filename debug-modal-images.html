@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modal Image Debug - Kyle's Design Workshop</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .debug-section { background: white; margin: 20px 0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .image-test { border: 2px solid #ddd; margin: 10px 0; padding: 10px; }
+        .image-test img { max-width: 300px; height: auto; border: 1px solid #ccc; }
+        .status { padding: 5px 10px; margin: 5px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .modal-simulation { 
+            background: white; 
+            border: 1px solid #ddd; 
+            border-radius: 10px; 
+            padding: 20px; 
+            margin: 20px 0;
+            max-height: 400px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Modal Image Debug Tool</h1>
+    
+    <div class="debug-section">
+        <h3>Step 1: Direct Image Loading Test</h3>
+        <p>Testing if the images load directly in the page:</p>
+        
+        <div class="image-test">
+            <strong>Portfolio 1 Light:</strong><br>
+            <img src="portfolio1-light.jpg.png" alt="Portfolio 1 Light" onload="updateStatus('img1', true)" onerror="updateStatus('img1', false)">
+            <div id="status-img1" class="status">Loading...</div>
+        </div>
+        
+        <div class="image-test">
+            <strong>Portfolio 1 Dark:</strong><br>
+            <img src="portfolio1-dark.jpg.png" alt="Portfolio 1 Dark" onload="updateStatus('img2', true)" onerror="updateStatus('img2', false)">
+            <div id="status-img2" class="status">Loading...</div>
+        </div>
+        
+        <div class="image-test">
+            <strong>Portfolio 2 (Church):</strong><br>
+            <img src="portfolio2.jpg.png" alt="Portfolio 2" onload="updateStatus('img3', true)" onerror="updateStatus('img3', false)">
+            <div id="status-img3" class="status">Loading...</div>
+        </div>
+        
+        <div class="image-test">
+            <strong>Portfolio 3 (Media):</strong><br>
+            <img src="portfolio3.jpg.png" alt="Portfolio 3" onload="updateStatus('img4', true)" onerror="updateStatus('img4', false)">
+            <div id="status-img4" class="status">Loading...</div>
+        </div>
+    </div>
+
+    <div class="debug-section">
+        <h3>Step 2: Modal Container Simulation</h3>
+        <p>Testing images inside modal-like containers:</p>
+        
+        <div class="modal-simulation">
+            <h4>Finsweet Light Version (Modal Style)</h4>
+            <div class="modal-scroll-container" style="max-height: 300px; overflow: auto; border: 1px solid #eee;">
+                <img src="portfolio1-light.jpg.png" alt="Modal Test 1" style="width: 100%; height: auto;" onload="updateStatus('modal1', true)" onerror="updateStatus('modal1', false)">
+            </div>
+            <div id="status-modal1" class="status">Loading...</div>
+        </div>
+        
+        <div class="modal-simulation">
+            <h4>Church Website (Modal Style)</h4>
+            <div class="modal-scroll-container" style="max-height: 300px; overflow: auto; border: 1px solid #eee;">
+                <img src="portfolio2.jpg.png" alt="Modal Test 2" style="width: 100%; height: auto;" onload="updateStatus('modal2', true)" onerror="updateStatus('modal2', false)">
+            </div>
+            <div id="status-modal2" class="status">Loading...</div>
+        </div>
+    </div>
+
+    <div class="debug-section">
+        <h3>Step 3: File Path Check</h3>
+        <p>Let's verify the exact file paths:</p>
+        <div id="file-check">
+            <p>Checking files...</p>
+        </div>
+    </div>
+
+    <p><a href="index.html" style="background: #6366f1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">← Back to Main Site</a></p>
+
+    <script>
+        function updateStatus(id, success) {
+            const statusElement = document.getElementById('status-' + id);
+            if (success) {
+                statusElement.textContent = '✅ Image loaded successfully!';
+                statusElement.className = 'status success';
+            } else {
+                statusElement.textContent = '❌ Failed to load image';
+                statusElement.className = 'status error';
+            }
+        }
+
+        // Check if images exist by trying to load them
+        function checkImageExists(url) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => resolve(true);
+                img.onerror = () => resolve(false);
+                img.src = url;
+            });
+        }
+
+        async function runFileCheck() {
+            const fileCheck = document.getElementById('file-check');
+            const files = [
+                'portfolio1-light.jpg.png',
+                'portfolio1-dark.jpg.png',
+                'portfolio2.jpg.png',
+                'portfolio3.jpg.png'
+            ];
+            
+            let html = '<ul>';
+            for (const file of files) {
+                const exists = await checkImageExists(file);
+                html += `<li>${file}: ${exists ? '✅ Found' : '❌ Not found'}</li>`;
+            }
+            html += '</ul>';
+            
+            fileCheck.innerHTML = html;
+        }
+
+        // Run the file check when page loads
+        window.addEventListener('load', runFileCheck);
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test - Kyle's Design Workshop</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-container { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        .test-container img { max-width: 200px; height: auto; border: 1px solid #ccc; }
+        .status { padding: 5px; margin-left: 10px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>🖼️ Image Loading Test</h1>
+    <p>This page tests if all your portfolio images are loading correctly.</p>
+    
+    <div class="test-container">
+        <h3>Portfolio Thumbnails</h3>
+        <div>
+            <strong>Finsweet Thumbnail:</strong>
+            <img src="portfolio1-light.jpg.png" alt="Portfolio 1 Thumb" onload="showStatus(this, true)" onerror="showStatus(this, false)">
+            <span class="status" id="status-thumb1">Loading...</span>
+        </div>
+        <div>
+            <strong>Church Thumbnail:</strong>
+            <img src="portfolio2.jpg.png" alt="Portfolio 2 Thumb" onload="showStatus(this, true)" onerror="showStatus(this, false)">
+            <span class="status" id="status-thumb2">Loading...</span>
+        </div>
+        <div>
+            <strong>Media Production Thumbnail:</strong>
+            <img src="portfolio3.jpg.png" alt="Portfolio 3 Thumb" onload="showStatus(this, true)" onerror="showStatus(this, false)">
+            <span class="status" id="status-thumb3">Loading...</span>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>Full-Size Modal Images</h3>
+        <div>
+            <strong>Finsweet Light:</strong>
+            <img src="portfolio1-light.jpg.png" alt="Portfolio 1 Light" onload="showStatus(this, true)" onerror="showStatus(this, false)">
+            <span class="status" id="status-light">Loading...</span>
+        </div>
+        <div>
+            <strong>Finsweet Dark:</strong>
+            <img src="portfolio1-dark.jpg.png" alt="Portfolio 1 Dark" onload="showStatus(this, true)" onerror="showStatus(this, false)">
+            <span class="status" id="status-dark">Loading...</span>
+        </div>
+        <div>
+            <strong>Church Full:</strong>
+            <img src="portfolio2.jpg.png" alt="Portfolio 2 Full" onload="showStatus(this, true)" onerror="showStatus(this, false)">
+            <span class="status" id="status-church">Loading...</span>
+        </div>
+        <div>
+            <strong>Media Production Full:</strong>
+            <img src="portfolio3.jpg.png" alt="Portfolio 3 Full" onload="showStatus(this, true)" onerror="showStatus(this, false)">
+            <span class="status" id="status-media">Loading...</span>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>📋 Current Files in Directory:</h3>
+        <p>According to the file system, you have these image files:</p>
+        <ul>
+            <li>portfolio1-thumb.jpg</li>
+            <li>portfolio1-light.jpg.png</li>
+            <li>portfolio1-dark.jpg.png</li>
+            <li>portfolio2.jpg.png</li>
+            <li>portfolio3.jpg.png</li>
+        </ul>
+    </div>
+
+    <p><a href="index.html" style="background: #6366f1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">← Back to Main Site</a></p>
+
+    <script>
+        function showStatus(img, success) {
+            const statusId = 'status-' + (
+                img.alt.includes('Thumb') ? (
+                    img.alt.includes('1') ? 'thumb1' : 
+                    img.alt.includes('2') ? 'thumb2' : 'thumb3'
+                ) : (
+                    img.alt.includes('Light') ? 'light' :
+                    img.alt.includes('Dark') ? 'dark' :
+                    img.alt.includes('Church') ? 'church' : 'media'
+                )
+            );
+            
+            const statusElement = document.getElementById(statusId);
+            if (success) {
+                statusElement.textContent = '✅ Loaded successfully';
+                statusElement.className = 'status success';
+            } else {
+                statusElement.textContent = '❌ Failed to load';
+                statusElement.className = 'status error';
+            }
+        }
+    </script>
+</body>
+</html>
