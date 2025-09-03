@@ -85,30 +85,76 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Contact form handling
+    // Contact form handling with Web3Forms
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const service = this.querySelector('select').value;
-            const message = this.querySelector('textarea').value;
-
-            // Basic validation
-            if (!name || !email || !service || !message) {
-                alert('Please fill in all fields.');
-                return;
-            }
-
-            // Simulate form submission (replace with actual form handling)
-            alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon!`);
+            const submitBtn = this.querySelector('.form-submit-btn');
+            const submitText = this.querySelector('.submit-text');
+            const submitLoading = this.querySelector('.submit-loading');
+            const messageDiv = document.getElementById('form-message');
             
-            // Reset form
-            this.reset();
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.style.display = 'none';
+            submitLoading.style.display = 'flex';
+            messageDiv.style.display = 'none';
+            
+            try {
+                // Get form data
+                const formData = new FormData(this);
+                
+                // Check for access key
+                const accessKey = formData.get('access_key');
+                if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+                    throw new Error('Web3Forms access key not configured. Please add your access key to the form.');
+                }
+                
+                // Submit to Web3Forms
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Success message
+                    messageDiv.innerHTML = '<i class="fas fa-check-circle"></i>Thank you! Your message has been sent successfully. I\'ll get back to you soon!';
+                    messageDiv.className = 'form-message success';
+                    messageDiv.style.display = 'block';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        messageDiv.style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error(result.message || 'Failed to send message');
+                }
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                
+                // Error message
+                messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i>' + error.message;
+                messageDiv.className = 'form-message error';
+                messageDiv.style.display = 'block';
+                
+                // Hide error message after 7 seconds
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 7000);
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitText.style.display = 'inline';
+                submitLoading.style.display = 'none';
+            }
         });
     }
 });
