@@ -785,6 +785,8 @@ body {
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+    margin-bottom: -4rem;
+    z-index: 1;
 }
 
 .hosting-section::before {
@@ -954,7 +956,8 @@ body {
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
 }
 
-/* Hosting floating elements */
+/* Hosting floating elements - Removed to fix purple bar issue */
+/*
 .hosting-section::after {
     content: '';
     position: absolute;
@@ -966,6 +969,7 @@ body {
     border-radius: 50%;
     animation: floatRotate 20s linear infinite;
 }
+*/
 
 @media (min-width: 768px) {
     .hosting-section::after {
@@ -987,6 +991,8 @@ body {
 .services {
     padding: 4rem 0;
     background: #f9fafb;
+    position: relative;
+    z-index: 2;
 }
 
 .services-grid {
