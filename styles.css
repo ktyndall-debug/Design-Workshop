@@ -588,6 +588,28 @@ body {
     font-weight: 500;
 }
 
+/* Portfolio Disclaimer */
+.portfolio-disclaimer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: #f0f9ff;
+    border-radius: 12px;
+    border-left: 4px solid #6366f1;
+}
+
+.portfolio-disclaimer p {
+    color: #64748b;
+    margin: 0;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.portfolio-disclaimer i {
+    color: #6366f1;
+    margin-right: 0.5rem;
+}
+
 /* Pricing Section */
 .pricing {
     padding: 4rem 0;
