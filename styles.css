@@ -48,6 +48,13 @@ body {
     color: #6366f1;
 }
 
+.logo-image {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    max-width: 320px;
+}
+
 .nav-logo i {
     font-size: 1.5rem;
 }
@@ -1223,6 +1230,14 @@ body {
     font-weight: 700;
     font-size: 1.25rem;
     margin-bottom: 1rem;
+}
+
+.footer-logo-image {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    max-width: 300px;
+    filter: brightness(0) invert(1);
 }
 
 .footer-logo i {
