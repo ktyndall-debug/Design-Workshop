@@ -843,6 +843,48 @@ body {
     max-width: 500px;
     width: 100%;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+/* Easter egg hover effect */
+.hosting-content-default {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hosting-content-hover {
+    position: absolute;
+    top: 3rem;
+    left: 2.5rem;
+    right: 2.5rem;
+    bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+}
+
+.hosting-card:hover .hosting-content-default {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.hosting-card:hover .hosting-content-hover {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Special styling for the annual offer */
+.hosting-content-hover .price-description {
+    color: #059669;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.hosting-content-hover .amount {
+    color: #059669;
 }
 
 .hosting-card::before {
