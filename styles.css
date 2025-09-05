@@ -505,8 +505,29 @@ body {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    justify-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* For 4 items, create a balanced 2x2 layout */
+@media (min-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+        max-width: 900px;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        gap: 2rem;
+    }
 }
 
 .portfolio-item {
@@ -621,8 +642,10 @@ body {
 
 /* Pricing Section */
 .pricing {
-    padding: 4rem 0;
+    padding: 4rem 0 0 0;
     background: #f1f5f9;
+    position: relative;
+    z-index: 1;
 }
 
 .pricing-grid {
@@ -789,10 +812,13 @@ body {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     position: relative;
     overflow: hidden;
+    /* Restore full-width but with better containment */
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     box-sizing: border-box;
+    /* Add explicit height to prevent overflow */
+    min-height: auto;
 }
 
 /* Remove background pattern that might cause issues */
@@ -1030,29 +1056,19 @@ body {
 
 @media (max-width: 767px) {
     .hosting-section {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        overflow-x: hidden;
-    }
-    
-    .hosting-section::after {
-        display: none;
+        padding: 3rem 0;
     }
     
     .hosting-card {
         margin: 0 1rem;
+        max-width: calc(100% - 2rem);
     }
 }
 
 /* Additional fix for specific devices */
 @media (max-width: 480px) {
     .hosting-section {
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        width: 100vw;
-        position: relative;
-        overflow: hidden;
+        padding: 2.5rem 0;
     }
 }
 
@@ -1060,6 +1076,9 @@ body {
 .services {
     padding: 4rem 0;
     background: #f9fafb;
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
 }
 
 .services-grid {
