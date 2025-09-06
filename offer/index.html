@@ -1,831 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyle's Design Workshop - Free Website Mockup</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #ffffff;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%);
-            color: white;
-            text-align: center;
-            padding: 50px 0 70px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(66, 153, 225, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.3) 0%, transparent 50%);
-            opacity: 0.7;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            opacity: 0.95;
-            font-weight: 400;
-            color: #e2e8f0;
-        }
-        
-        .guarantee-badge {
-            background: rgba(66, 153, 225, 0.2);
-            border: 2px solid rgba(66, 153, 225, 0.4);
-            border-radius: 30px;
-            padding: 15px 30px;
-            margin: 25px auto;
-            display: inline-block;
-            backdrop-filter: blur(10px);
-            font-weight: 700;
-            font-size: 1rem;
-            animation: glow 2s ease-in-out infinite alternate;
-            color: #90cdf4;
-        }
-        
-        @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(66, 153, 225, 0.3); }
-            to { box-shadow: 0 0 30px rgba(66, 153, 225, 0.6); }
-        }
-        
-        .cta-hero {
-            background: linear-gradient(135deg, #4299e1, #3182ce);
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 15px;
-            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
-        }
-        
-        .cta-hero:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(66, 153, 225, 0.6);
-            background: linear-gradient(135deg, #3182ce, #2c5282);
-        }
-        
-        .section {
-            padding: 50px 20px;
-            margin: 0;
-        }
-        
-        .problem-section {
-            background: linear-gradient(135deg, #2d3748, #1a202c);
-            color: white;
-            text-align: center;
-        }
-        
-        .problem-section h2 {
-            font-size: 2rem;
-            margin-bottom: 25px;
-            font-weight: 700;
-            color: #e2e8f0;
-        }
-        
-        .pain-points {
-            list-style: none;
-            margin: 30px 0;
-            text-align: left;
-            max-width: 350px;
-            margin: 30px auto;
-        }
-        
-        .pain-points li {
-            background: rgba(45, 55, 72, 0.6);
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            border-radius: 15px;
-            font-size: 1rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(66, 153, 225, 0.2);
-            color: #cbd5e0;
-        }
-        
-        .pain-points li::before {
-            content: "❌ ";
-            margin-right: 10px;
-        }
-        
-        .solution-section {
-            background: #f7fafc;
-            text-align: center;
-        }
-        
-        .solution-section h2 {
-            font-size: 2rem;
-            color: #2d3748;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-        
-        .benefits {
-            list-style: none;
-            margin: 30px 0;
-            text-align: left;
-            max-width: 350px;
-            margin: 30px auto;
-        }
-        
-        .benefits li {
-            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            border-radius: 15px;
-            font-size: 1rem;
-            color: #2d3748;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
-            border: 1px solid rgba(66, 153, 225, 0.1);
-        }
-        
-        .benefits li::before {
-            content: "✅ ";
-            margin-right: 10px;
-        }
-        
-        .offer-section {
-            background: linear-gradient(135deg, #4299e1 0%, #3182ce 50%, #2c5282 100%);
-            color: white;
-            text-align: center;
-        }
-        
-        .offer-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-        
-        .offer-highlight {
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 25px 0;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-        
-        .offer-highlight h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .offer-highlight p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .pricing-section {
-            background: white;
-            text-align: center;
-        }
-        
-        .pricing-section h2 {
-            font-size: 2rem;
-            color: #2d3748;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-        
-        .pricing-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
-            max-width: 350px;
-            margin: 0 auto;
-        }
-        
-        .pricing-card {
-            background: #f7fafc;
-            border-radius: 20px;
-            padding: 25px;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .pricing-card.featured {
-            background: linear-gradient(135deg, #4299e1, #3182ce);
-            color: white;
-            transform: scale(1.08);
-            border: 3px solid #2c5282;
-            position: relative;
-            padding: 40px 25px 25px 25px;
-            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.5);
-            animation: featured-glow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes featured-glow {
-            from { box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4); }
-            to { box-shadow: 0 20px 50px rgba(66, 153, 225, 0.6); }
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ff4444;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.5);
-            z-index: 100;
-            border: 2px solid white;
-        }
-        
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .pricing-card .price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: #4299e1;
-        }
-        
-        .pricing-card.featured .price {
-            color: white;
-        }
-        
-        .pricing-card ul {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 20px;
-        }
-        
-        .pricing-card ul li {
-            padding: 8px 0;
-            font-size: 0.95rem;
-        }
-        
-        .pricing-card ul li::before {
-            content: "✓ ";
-            color: #38a169;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-        
-        .pricing-card.featured ul li::before {
-            color: #9ae6b4;
-        }
-        
-        .social-proof {
-            background: #f7fafc;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        
-        .social-proof h2 {
-            font-size: 1.8rem;
-            color: #2d3748;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-        
-        .testimonial {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
-            border-left: 4px solid #4299e1;
-        }
-        
-        .testimonial p {
-            font-style: italic;
-            margin-bottom: 15px;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #4a5568;
-        }
-        
-        .testimonial .author {
-            font-weight: 600;
-            color: #4299e1;
-        }
-        
-        .urgency-section {
-            background: linear-gradient(135deg, #2d3748, #1a202c);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        
-        .urgency-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .timer {
-            background: rgba(66, 153, 225, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border: 1px solid rgba(66, 153, 225, 0.3);
-        }
-        
-        /* NEW DRAMATIC FORM STYLING */
-        .form-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 80px 20px;
-            text-align: center;
-        }
-        
-        .form-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            padding: 60px 40px;
-            border-radius: 30px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
-            text-align: left;
-        }
-        
-        .form-title {
-            color: #2d3748;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            text-align: center;
-        }
-        
-        .form-subtitle {
-            color: #718096;
-            margin-bottom: 50px;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            color: #1a202c;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            background: #f8fafc;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-        }
-        
-        .submit-button {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 25px;
-            border-radius: 50px;
-            font-size: 1.4rem;
-            font-weight: 800;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 35px 0 30px 0;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
-        }
-        
-        .submit-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
-        }
-        
-        .trust-section {
-            text-align: center;
-        }
-        
-        .trust-text {
-            color: #718096;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-        
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .trust-badge {
-            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            color: #2d3748;
-            font-weight: 600;
-        }
-        
-        .scroll-indicator {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #4299e1;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
-        }
-        
-        .scroll-indicator:hover {
-            transform: scale(1.1);
-            background: #3182ce;
-        }
-        
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-            
-            .form-container {
-                padding: 40px 30px;
-            }
-            
-            .form-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .problem-section h2,
-            .solution-section h2,
-            .pricing-section h2 {
-                font-size: 1.6rem;
-            }
-            
-            .offer-section h2 {
-                font-size: 1.8rem;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-            
-            .form-container {
-                padding: 30px 20px;
-            }
-            
-            .form-title {
-                font-size: 1.8rem;
-            }
-            
-            .form-subtitle {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Hero Section -->
-    <div class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Bringing Your Digital Vision to Life</h1>
-                <p class="hero-subtitle">Professional web design and development services that transform your business ideas into stunning, functional websites that engage customers and drive results.</p>
-                <div class="guarantee-badge">
-                    🎯 FREE MOCKUP • PAY ONLY IF YOU LOVE IT
-                </div>
-                <button class="cta-hero" onclick="scrollToForm()">Get My FREE Website Mockup</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Problem Section -->
-    <div class="section problem-section">
-        <div class="container">
-            <h2>Is Your Current Website Holding You Back?</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 25px; color: #cbd5e0;">Your outdated website could be costing you customers every single day...</p>
-            <ul class="pain-points">
-                <li>Your website doesn't look professional or trustworthy</li>
-                <li>It's not mobile-responsive and frustrates mobile users</li>
-                <li>Pages load slowly, causing visitors to leave</li>
-                <li>No clear way for visitors to become customers</li>
-                <li>Competitors are capturing your potential clients</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Solution Section -->
-    <div class="section solution-section">
-        <div class="container">
-            <h2>Crafting Digital Experiences That Make Your Business Stand Out</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 25px; color: #718096;">I build lightning-fast websites using the latest technologies and best practices for optimal performance. Every website I create looks perfect and functions flawlessly across all devices.</p>
-            <ul class="benefits">
-                <li>Unique, tailor-made websites that reflect your brand identity</li>
-                <li>Modern, responsive websites built with latest technologies</li>
-                <li>Lightning-fast loading for optimal performance</li>
-                <li>Mobile optimization that works on all devices</li>
-                <li>Websites that engage your target audience effectively</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Special Offer Section -->
-    <div class="section offer-section">
-        <div class="container">
-            <h2>Zero-Risk Website Design Process</h2>
-            <div class="offer-highlight">
-                <h3>Here's How We Bring Your Vision to Life:</h3>
-                <p><strong>Step 1:</strong> Tell us about your business and goals<br>
-                <strong>Step 2:</strong> We create a custom website mockup for FREE<br>
-                <strong>Step 3:</strong> You only pay if you love the design and want to move forward</p>
-            </div>
-            <p style="font-size: 1.2rem; font-weight: 600; margin-top: 20px;">
-                I work closely with you throughout the entire process, ensuring the final product matches your vision. No upfront costs, no hidden fees, no risk to you!
-            </p>
-        </div>
-    </div>
-
-    <!-- Pricing Section -->
-    <div class="section pricing-section">
-        <div class="container">
-            <h2>Competitive Rates for Professional Web Development Services</h2>
-            <p style="color: #718096; margin-bottom: 30px;">All packages include mobile optimization, domain name (if needed), and basic training</p>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="price">$500</div>
-                    <p style="font-weight: 600; margin-bottom: 15px;">Perfect for small businesses</p>
-                    <ul>
-                        <li>Professional website design</li>
-                        <li>Mobile optimization included</li>
-                        <li>Domain name setup (if needed)</li>
-                        <li>Basic training provided</li>
-                    </ul>
-                </div>
-                
-                <div class="pricing-card featured">
-                    <div class="popular-badge">Most Popular</div>
-                    <h3 style="margin-top: 10px;">Professional</h3>
-                    <div class="price">$1,500</div>
-                    <p style="font-weight: 600; margin-bottom: 15px;">Best for growing businesses</p>
-                    <ul>
-                        <li>Everything in Starter package</li>
-                        <li>Advanced design features</li>
-                        <li>Enhanced functionality</li>
-                        <li>Priority support</li>
-                        <li>We handle everything</li>
-                    </ul>
-                </div>
-                
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="price">$2,500+</div>
-                    <p style="font-weight: 600; margin-bottom: 15px;">Complete digital solution</p>
-                    <ul>
-                        <li>Comprehensive web solutions</li>
-                        <li>Custom functionality</li>
-                        <li>Advanced integrations</li>
-                        <li>Custom quotes available</li>
-                        <li>Tailored to your business needs</li>
-                        <li>Complete project management</li>
-                    </ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kyle's Design Workshop - Free Website Mockup</title>
+        <style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height: 1.6; color: #333; background: #ffffff; overflow-x: hidden; } .container { max-width: 100%; margin: 0 auto; padding: 0 20px; } .hero { background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%); color: white; text-align: center; padding: 50px 0 70px; position: relative; overflow: hidden; } .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 80%, rgba(66, 153, 225, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.3) 0%, transparent 50%); opacity: 0.7; } .hero-content { position: relative; z-index: 1; } .hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.3); } .hero-subtitle { font-size: 1.2rem; margin-bottom: 25px; opacity: 0.95; font-weight: 400; color: #e2e8f0; } .guarantee-badge { background: rgba(66, 153, 225, 0.2); border: 2px solid rgba(66, 153, 225, 0.4); border-radius: 30px; padding: 15px 30px; margin: 25px auto; display: inline-block; backdrop-filter: blur(10px); font-weight: 700; font-size: 1rem; animation: glow 2s ease-in-out infinite alternate; color: #90cdf4; } @keyframes glow { from {  box-shadow: 0 0 20px rgba(66, 153, 225, 0.3); }  to {  box-shadow: 0 0 30px rgba(66, 153, 225, 0.6); } } .cta-hero { background: linear-gradient(135deg, #4299e1, #3182ce); color: white; border: none; padding: 18px 40px; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4); } .cta-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(66, 153, 225, 0.6); background: linear-gradient(135deg, #3182ce, #2c5282); } .section { padding: 50px 20px; margin: 0; } .problem-section { background: linear-gradient(135deg, #2d3748, #1a202c); color: white; text-align: center; } .problem-section h2 { font-size: 2rem; margin-bottom: 25px; font-weight: 700; color: #e2e8f0; } .pain-points { list-style: none; margin: 30px 0; text-align: left; max-width: 350px; margin: 30px auto; } .pain-points li { background: rgba(45, 55, 72, 0.6); padding: 15px 20px; margin-bottom: 15px; border-radius: 15px; font-size: 1rem; backdrop-filter: blur(10px); border: 1px solid rgba(66, 153, 225, 0.2); color: #cbd5e0; } .pain-points li::before { content: "❌ "; margin-right: 10px; } .solution-section { background: #f7fafc; text-align: center; } .solution-section h2 { font-size: 2rem; color: #2d3748; margin-bottom: 25px; font-weight: 700; } .benefits { list-style: none; margin: 30px 0; text-align: left; max-width: 350px; margin: 30px auto; } .benefits li { background: linear-gradient(135deg, #e6fffa, #b2f5ea); padding: 15px 20px; margin-bottom: 15px; border-radius: 15px; font-size: 1rem; color: #2d3748; font-weight: 500; box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1); border: 1px solid rgba(66, 153, 225, 0.1); } .benefits li::before { content: "✅ "; margin-right: 10px; } .offer-section { background: linear-gradient(135deg, #4299e1 0%, #3182ce 50%, #2c5282 100%); color: white; text-align: center; } .offer-section h2 { font-size: 2.2rem; margin-bottom: 20px; font-weight: 800; } .offer-highlight { background: rgba(255,255,255,0.15); border-radius: 20px; padding: 25px; margin: 25px 0; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.2); } .offer-highlight h3 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; } .offer-highlight p { font-size: 1.1rem; line-height: 1.6; } .pricing-section { background: white; text-align: center; } .pricing-section h2 { font-size: 2rem; color: #2d3748; margin-bottom: 30px; font-weight: 700; } .pricing-cards { display: flex; flex-direction: column; gap: 35px; max-width: 350px; margin: 0 auto; } .pricing-card { background: #f7fafc; border-radius: 20px; padding: 25px; border: 2px solid #e2e8f0; transition: all 0.3s ease; position: relative; } .pricing-card.featured { background: linear-gradient(135deg, #4299e1, #3182ce); color: white; transform: scale(1.08); border: 3px solid #2c5282; position: relative; padding: 40px 25px 25px 25px; box-shadow: 0 15px 40px rgba(66, 153, 225, 0.5); animation: featured-glow 3s ease-in-out infinite alternate; } @keyframes featured-glow { from {  box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4); }  to {  box-shadow: 0 20px 50px rgba(66, 153, 225, 0.6); } } .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #ff4444; color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(255, 68, 68, 0.5); z-index: 100; border: 2px solid white; } .pricing-card h3 { font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; } .pricing-card .price { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; color: #4299e1; } .pricing-card.featured .price { color: white; } .pricing-card ul { list-style: none; text-align: left; margin-bottom: 20px; } .pricing-card ul li { padding: 8px 0; font-size: 0.95rem; } .pricing-card ul li::before { content: "✓ "; color: #38a169; font-weight: bold; margin-right: 8px; } .pricing-card.featured ul li::before { color: #9ae6b4; } .social-proof { background: #f7fafc; text-align: center; padding: 40px 20px; } .social-proof h2 { font-size: 1.8rem; color: #2d3748; margin-bottom: 25px; font-weight: 700; } .testimonial { background: white; border-radius: 15px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1); border-left: 4px solid #4299e1; } .testimonial p { font-style: italic; margin-bottom: 15px; font-size: 1rem; line-height: 1.6; color: #4a5568; } .testimonial .author { font-weight: 600; color: #4299e1; } .urgency-section { background: linear-gradient(135deg, #2d3748, #1a202c); color: white; text-align: center; padding: 40px 20px; } .urgency-section h2 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 700; } .timer { background: rgba(66, 153, 225, 0.2); border-radius: 15px; padding: 20px; margin: 20px 0; font-size: 1.2rem; font-weight: 600; border: 1px solid rgba(66, 153, 225, 0.3); } /* NEW DRAMATIC FORM STYLING */.form-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 20px; text-align: center; } .form-container { max-width: 700px; margin: 0 auto; background: white; padding: 60px 40px; border-radius: 30px; box-shadow: 0 30px 80px rgba(0,0,0,0.3); text-align: left; } .form-title { color: #2d3748; font-size: 2.5rem; margin-bottom: 15px; font-weight: 800; text-align: center; } .form-subtitle { color: #718096; margin-bottom: 50px; font-size: 1.2rem; text-align: center; } .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; } .form-group { margin-bottom: 25px; } .form-label { display: block; margin-bottom: 8px; font-weight: 700; color: #1a202c; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; } .form-input { width: 100%; padding: 20px; border: 2px solid #e2e8f0; border-radius: 15px; font-size: 1.1rem; background: #f8fafc; transition: all 0.3s ease; font-weight: 500; } .form-input:focus { outline: none; border-color: #667eea; background: white; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15); } .submit-button { width: 100%; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 25px; border-radius: 50px; font-size: 1.4rem; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; margin: 35px 0 30px 0; box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); transition: all 0.3s ease; } .submit-button:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6); } .trust-section { text-align: center; } .trust-text { color: #718096; font-size: 0.95rem; margin-bottom: 20px; } .trust-badges { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; } .trust-badge { background: linear-gradient(135deg, #e6fffa, #b2f5ea); padding: 10px 20px; border-radius: 25px; font-size: 0.85rem; color: #2d3748; font-weight: 600; } .scroll-indicator { position: fixed; bottom: 30px; right: 30px; background: #4299e1; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; z-index: 1000; box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4); } .scroll-indicator:hover { transform: scale(1.1); background: #3182ce; } @media (max-width: 768px) { .form-row {  grid-template-columns: 1fr;  gap: 0; }  .form-container {  padding: 40px 30px; }  .form-title {  font-size: 2rem; } } @media (max-width: 480px) { .hero h1 {  font-size: 2rem; }  .hero-subtitle {  font-size: 1rem; }  .problem-section h2, .solution-section h2, .pricing-section h2 {  font-size: 1.6rem; }  .offer-section h2 {  font-size: 1.8rem; }  .container {  padding: 0 15px; }  .form-container {  padding: 30px 20px; }  .form-title {  font-size: 1.8rem; }  .form-subtitle {  font-size: 1rem; } }</style>
+    </head>
+    <body>
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Bringing Your Digital Vision to Life</h1>
+                    <p class="hero-subtitle">Professional web design and development services that transform your business ideas into stunning, functional websites that engage customers and drive results.</p>
+                    <div class="guarantee-badge">
+                        🎯 FREE MOCKUP • PAY ONLY IF YOU LOVE IT
+</div>
+                    <button class="cta-hero" onclick="scrollToForm()">Get My FREE Website Mockup</button>
                 </div>
             </div>
-            
-            <!-- Hosting Section -->
-            <div style="background: #f7fafc; border-radius: 15px; padding: 25px; margin-top: 30px; border: 2px solid #e2e8f0;">
-                <h3 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 15px; font-weight: 700;">🚀 Complete Hosting Management</h3>
-                <p style="color: #4a5568; margin-bottom: 15px; font-size: 1rem;">We handle everything so you don't have to worry about technical details!</p>
-                <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 1.8rem; font-weight: 800; color: #4299e1;">$50/month</div>
-                        <div style="font-size: 0.9rem; color: #718096;">Monthly hosting</div>
+        </div>
+        <!-- Problem Section -->
+        <div class="section problem-section">
+            <div class="container">
+                <h2>Is Your Current Website Holding You Back?</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 25px; color: #cbd5e0;">Your outdated website could be costing you customers every single day...</p>
+                <ul class="pain-points">
+                    <li>Your website doesn't look professional or trustworthy</li>
+                    <li>It's not mobile-responsive and frustrates mobile users</li>
+                    <li>Pages load slowly, causing visitors to leave</li>
+                    <li>No clear way for visitors to become customers</li>
+                    <li>Competitors are capturing your potential clients</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Solution Section -->
+        <div class="section solution-section">
+            <div class="container">
+                <h2>Crafting Digital Experiences That Make Your Business Stand Out</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 25px; color: #718096;">I build lightning-fast websites using the latest technologies and best practices for optimal performance. Every website I create looks perfect and functions flawlessly across all devices.</p>
+                <ul class="benefits">
+                    <li>Unique, tailor-made websites that reflect your brand identity</li>
+                    <li>Modern, responsive websites built with latest technologies</li>
+                    <li>Lightning-fast loading for optimal performance</li>
+                    <li>Mobile optimization that works on all devices</li>
+                    <li>Websites that engage your target audience effectively</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Special Offer Section -->
+        <div class="section offer-section">
+            <div class="container">
+                <h2>Zero-Risk Website Design Process</h2>
+                <div class="offer-highlight">
+                    <h3>Here's How We Bring Your Vision to Life:</h3>
+                    <p><strong>Step 1:</strong> Tell us about your business and goals<br> <strong>Step 2:</strong> We create a custom website mockup for FREE<br> <strong>Step 3:</strong> You only pay if you love the design and want to move forward</p>
+                </div>
+                <p style="font-size: 1.2rem; font-weight: 600; margin-top: 20px;">
+                I work closely with you throughout the entire process, ensuring the final product matches your vision. No upfront costs, no hidden fees, no risk to you! </p>
+            </div>
+        </div>
+        <!-- Pricing Section -->
+        <div class="section pricing-section">
+            <div class="container">
+                <h2>Competitive Rates for Professional Web Development Services</h2>
+                <p style="color: #718096; margin-bottom: 30px;">All packages include mobile optimization, domain name (if needed), and basic training</p>
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3>Starter</h3>
+                        <div class="price">$500</div>
+                        <p style="font-weight: 600; margin-bottom: 15px;">Perfect for small businesses</p>
+                        <ul>
+                            <li>Professional website design</li>
+                            <li>Mobile optimization included</li>
+                            <li>Domain name setup (if needed)</li>
+                            <li>Basic training provided</li>
+                        </ul>
                     </div>
-                    <div style="font-size: 1.2rem; color: #718096;">OR</div>
-                    <div style="text-align: center; background: linear-gradient(135deg, #4299e1, #3182ce); color: white; padding: 15px; border-radius: 10px;">
-                        <div style="font-size: 1.8rem; font-weight: 800;">$500/year</div>
-                        <div style="font-size: 0.9rem; opacity: 0.9;">Get 2 months FREE!</div>
+                    <div class="pricing-card featured">
+                        <div class="popular-badge">Most Popular</div>
+                        <h3 style="margin-top: 10px;">Professional</h3>
+                        <div class="price">$1,500</div>
+                        <p style="font-weight: 600; margin-bottom: 15px;">Best for growing businesses</p>
+                        <ul>
+                            <li>Everything in Starter package</li>
+                            <li>Advanced design features</li>
+                            <li>Enhanced functionality</li>
+                            <li>Priority support</li>
+                            <li>We handle everything</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <div class="price">$2,500+</div>
+                        <p style="font-weight: 600; margin-bottom: 15px;">Complete digital solution</p>
+                        <ul>
+                            <li>Comprehensive web solutions</li>
+                            <li>Custom functionality</li>
+                            <li>Advanced integrations</li>
+                            <li>Custom quotes available</li>
+                            <li>Tailored to your business needs</li>
+                            <li>Complete project management</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Hosting Section -->
+                <div style="background: #f7fafc; border-radius: 15px; padding: 25px; margin-top: 30px; border: 2px solid #e2e8f0;">
+                    <h3 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 15px; font-weight: 700;">🚀 Complete Hosting Management</h3>
+                    <p style="color: #4a5568; margin-bottom: 15px; font-size: 1rem;">We handle everything so you don't have to worry about technical details!</p>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.8rem; font-weight: 800; color: #4299e1;">$50/month</div>
+                            <div style="font-size: 0.9rem; color: #718096;">Monthly hosting</div>
+                        </div>
+                        <div style="font-size: 1.2rem; color: #718096;">OR</div>
+                        <div style="text-align: center; background: linear-gradient(135deg, #4299e1, #3182ce); color: white; padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 1.8rem; font-weight: 800;">$500/year</div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Get 2 months FREE!</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Social Proof Section -->
-    <div class="social-proof">
-        <div class="container">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonial">
-                <p>"Kyle transformed our business with a stunning website that actually converts visitors into customers. The free mockup sold us immediately - we knew we were working with someone who understood our vision."</p>
-                <div class="author">- Sarah M., Small Business Owner</div>
-            </div>
-            <div class="testimonial">
-                <p>"Professional, fast, and exactly what we needed. Kyle built us a lightning-fast website that looks perfect on all devices. Our online presence has never been stronger."</p>
-                <div class="author">- Mike T., Growing Business</div>
+        <!-- Social Proof Section -->
+        <!-- Urgency Section -->
+        <div class="urgency-section">
+            <div class="container">
+                <h2>Ready to Bring Your Website Vision to Life?</h2>
+                <div class="timer">
+                    ⏰ Limited availability: Only accepting 10 new mockup requests this month
+</div>
+                <p style="font-size: 1.1rem;">Whether you need a brand new website or want to redesign your existing one, I'm here to help you create something amazing. Don't miss your chance to see what your new website could look like!</p>
             </div>
         </div>
-    </div>
-
-    <!-- Urgency Section -->
-    <div class="urgency-section">
-        <div class="container">
-            <h2>Ready to Bring Your Website Vision to Life?</h2>
-            <div class="timer">
-                ⏰ Limited availability: Only accepting 10 new mockup requests this month
-            </div>
-            <p style="font-size: 1.1rem;">Whether you need a brand new website or want to redesign your existing one, I'm here to help you create something amazing. Don't miss your chance to see what your new website could look like!</p>
-        </div>
-    </div>
-
-    <!-- NEW REDESIGNED FORM SECTION -->
-    <div class="form-section" id="form">
-        <div class="container">
-            <div class="form-container">
-                <h2 class="form-title">Get Your FREE Website Mockup</h2>
-                <p class="form-subtitle">Takes less than 2 minutes • No payment required • Professional consultation included</p>
-                
-                <form onsubmit="handleSubmit(event)">
-                    <!-- Name & Email Row -->
-                    <div class="form-row">
+        <!-- NEW REDESIGNED FORM SECTION -->
+        <div class="form-section" id="form">
+            <div class="container">
+                <div class="form-container">
+                    <h2 class="form-title">Get Your FREE Website Mockup</h2>
+                    <p class="form-subtitle">Takes less than 2 minutes • No payment required • Professional consultation included</p>
+                    <form onsubmit="handleSubmit(event)">
+                        <!-- Name & Email Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required class="form-input">
+                            </div>
+                        </div>
+                        <!-- Phone & Business Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="business">Business Name</label>
+                                <input type="text" id="business" name="business" class="form-input">
+                            </div>
+                        </div>
+                        <!-- Website -->
                         <div class="form-group">
-                            <label class="form-label" for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required class="form-input">
+                            <label class="form-label" for="website">Current Website (if any)</label>
+                            <input type="url" id="website" name="website" placeholder="https://yourwebsite.com" class="form-input">
                         </div>
+                        <!-- Industry & Timeline Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="industry">Business Type *</label>
+                                <select id="industry" name="industry" required class="form-input">
+                                    <option value="">Select your industry</option>
+                                    <option value="restaurant">Restaurant/Food</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="professional">Professional Services</option>
+                                    <option value="healthcare">Healthcare/Medical</option>
+                                    <option value="construction">Construction/Trades</option>
+                                    <option value="nonprofit">Non-profit/Church</option>
+                                    <option value="creative">Creative/Media</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="timeline">Timeline *</label>
+                                <select id="timeline" name="timeline" required class="form-input">
+                                    <option value="">When do you need this?</option>
+                                    <option value="asap">ASAP (Rush project)</option>
+                                    <option value="1month">Within 1 month</option>
+                                    <option value="2months">Within 2 months</option>
+                                    <option value="3months">Within 3 months</option>
+                                    <option value="flexible">I'm flexible</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Goals -->
                         <div class="form-group">
-                            <label class="form-label" for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required class="form-input">
+                            <label class="form-label" for="goals">What's your main goal for the new website?</label>
+                            <textarea id="goals" name="goals" rows="4" class="form-input" style="resize: vertical;"></textarea>
                         </div>
-                    </div>
-                    
-                    <!-- Phone & Business Row -->
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required class="form-input">
+                        <!-- Submit Button -->
+                        <button type="submit" class="submit-button">
+                            GET MY FREE MOCKUP NOW
+</button>
+                        <!-- Trust Indicators -->
+                        <div class="trust-section">
+                            <p class="trust-text">🔒 Your information is 100% secure and will never be shared</p>
+                            <div class="trust-badges"><span class="trust-badge">✓ No Spam</span><span class="trust-badge">✓ No Hidden Fees</span><span class="trust-badge">✓ Professional Service</span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="business">Business Name</label>
-                            <input type="text" id="business" name="business" class="form-input">
-                        </div>
-                    </div>
-                    
-                    <!-- Website -->
-                    <div class="form-group">
-                        <label class="form-label" for="website">Current Website (if any)</label>
-                        <input type="url" id="website" name="website" placeholder="https://yourwebsite.com" class="form-input">
-                    </div>
-                    
-                    <!-- Industry & Timeline Row -->
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="industry">Business Type *</label>
-                            <select id="industry" name="industry" required class="form-input">
-                                <option value="">Select your industry</option>
-                                <option value="restaurant">Restaurant/Food</option>
-                                <option value="retail">Retail</option>
-                                <option value="professional">Professional Services</option>
-                                <option value="healthcare">Healthcare/Medical</option>
-                                <option value="construction">Construction/Trades</option>
-                                <option value="nonprofit">Non-profit/Church</option>
-                                <option value="creative">Creative/Media</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="timeline">Timeline *</label>
-                            <select id="timeline" name="timeline" required class="form-input">
-                                <option value="">When do you need this?</option>
-                                <option value="asap">ASAP (Rush project)</option>
-                                <option value="1month">Within 1 month</option>
-                                <option value="2months">Within 2 months</option>
-                                <option value="3months">Within 3 months</option>
-                                <option value="flexible">I'm flexible</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <!-- Goals -->
-                    <div class="form-group">
-                        <label class="form-label" for="goals">What's your main goal for the new website?</label>
-                        <textarea id="goals" name="goals" rows="4" class="form-input" style="resize: vertical;"></textarea>
-                    </div>
-                    
-                    <!-- Submit Button -->
-                    <button type="submit" class="submit-button">
-                        GET MY FREE MOCKUP NOW
-                    </button>
-                    
-                    <!-- Trust Indicators -->
-                    <div class="trust-section">
-                        <p class="trust-text">🔒 Your information is 100% secure and will never be shared</p>
-                        <div class="trust-badges">
-                            <span class="trust-badge">✓ No Spam</span>
-                            <span class="trust-badge">✓ No Hidden Fees</span>
-                            <span class="trust-badge">✓ Professional Service</span>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator" onclick="scrollToForm()">
-        ↓
-    </div>
-
-    <script>
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" onclick="scrollToForm()">
+            ↓
+</div>
+        <script>
         function scrollToForm() {
             document.getElementById('form').scrollIntoView({
                 behavior: 'smooth'
@@ -888,5 +282,5 @@
             });
         });
     </script>
-</body>
+    </body>
 </html>
