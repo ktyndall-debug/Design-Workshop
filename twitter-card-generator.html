@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Card Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        .card-wrapper {
+            display: inline-block;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        #twitterCard {
+            display: block;
+            border-radius: 8px;
+        }
+        
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .info {
+            color: white;
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card-wrapper">
+            <canvas id="twitterCard" width="1200" height="630"></canvas>
+        </div>
+        <div class="controls">
+            <button onclick="generateCard(1)">Design 1: Professional</button>
+            <button onclick="generateCard(2)">Design 2: Modern Gradient</button>
+            <button onclick="generateCard(3)">Design 3: Tech Focus</button>
+            <button onclick="downloadCard()">Download Image</button>
+        </div>
+        <div class="info">
+            Twitter Card Size: 1200 x 630 pixels | Click any design then download
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('twitterCard');
+        const ctx = canvas.getContext('2d');
+        let currentDesign = 1;
+
+        function generateCard(design) {
+            currentDesign = design;
+            
+            if (design === 1) {
+                // Design 1: Professional Clean
+                // Background gradient
+                const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+                gradient.addColorStop(0, '#1a202c');
+                gradient.addColorStop(0.5, '#2d3748');
+                gradient.addColorStop(1, '#4a5568');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 1200, 630);
+                
+                // Add subtle pattern overlay
+                ctx.fillStyle = 'rgba(66, 153, 225, 0.1)';
+                for(let i = 0; i < 20; i++) {
+                    ctx.beginPath();
+                    ctx.arc(Math.random() * 1200, Math.random() * 630, Math.random() * 100 + 50, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Logo/Brand icon
+                ctx.fillStyle = '#4299e1';
+                ctx.font = 'bold 80px monospace';
+                ctx.fillText('</>', 100, 120);
+                
+                // Main Title
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 72px Inter, sans-serif';
+                ctx.fillText("Kyle's Design Workshop", 100, 250);
+                
+                // Tagline
+                ctx.fillStyle = '#e2e8f0';
+                ctx.font = '36px Inter, sans-serif';
+                ctx.fillText('Professional Web Design & Development', 100, 320);
+                
+                // Features
+                ctx.fillStyle = '#cbd5e0';
+                ctx.font = '28px Inter, sans-serif';
+                const features = ['✓ Custom Websites', '✓ Mobile Responsive', '✓ Fast & Modern'];
+                features.forEach((feature, index) => {
+                    ctx.fillText(feature, 100, 420 + (index * 45));
+                });
+                
+                // CTA Box
+                const ctaGradient = ctx.createLinearGradient(800, 400, 1100, 500);
+                ctaGradient.addColorStop(0, '#4299e1');
+                ctaGradient.addColorStop(1, '#3182ce');
+                ctx.fillStyle = ctaGradient;
+                ctx.roundRect(800, 400, 300, 80, 40);
+                ctx.fill();
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 24px Inter, sans-serif';
+                ctx.fillText('Get Started Today', 850, 448);
+                
+                // Website
+                ctx.fillStyle = '#90cdf4';
+                ctx.font = '22px Inter, sans-serif';
+                ctx.fillText('kylesdesignworkshop.com', 800, 540);
+                
+            } else if (design === 2) {
+                // Design 2: Modern Gradient
+                // Vibrant gradient background
+                const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+                gradient.addColorStop(0, '#667eea');
+                gradient.addColorStop(0.5, '#764ba2');
+                gradient.addColorStop(1, '#f64f59');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 1200, 630);
+                
+                // Glass morphism card
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.fillRect(100, 100, 1000, 430);
+                
+                // Title with shadow
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+                ctx.shadowBlur = 20;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 10;
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 84px Inter, sans-serif';
+                ctx.fillText("Kyle's Design", 150, 250);
+                ctx.fillText("Workshop", 150, 350);
+                
+                ctx.shadowBlur = 0;
+                
+                // Special offer badge
+                ctx.fillStyle = '#ffd700';
+                ctx.beginPath();
+                ctx.arc(950, 200, 80, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = '#000000';
+                ctx.font = 'bold 24px Inter, sans-serif';
+                ctx.fillText('FREE', 915, 195);
+                ctx.font = '18px Inter, sans-serif';
+                ctx.fillText('MOCKUP', 905, 220);
+                
+                // Bottom text
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '32px Inter, sans-serif';
+                ctx.fillText('Transform Your Business Online', 150, 450);
+                
+                ctx.font = 'bold 24px Inter, sans-serif';
+                ctx.fillText('Starting at $899 • Risk-Free Process', 150, 500);
+                
+            } else if (design === 3) {
+                // Design 3: Tech Focus
+                // Dark tech background
+                ctx.fillStyle = '#0a0e27';
+                ctx.fillRect(0, 0, 1200, 630);
+                
+                // Grid pattern
+                ctx.strokeStyle = 'rgba(66, 153, 225, 0.2)';
+                ctx.lineWidth = 1;
+                for(let i = 0; i < 1200; i += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(i, 0);
+                    ctx.lineTo(i, 630);
+                    ctx.stroke();
+                }
+                for(let i = 0; i < 630; i += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, i);
+                    ctx.lineTo(1200, i);
+                    ctx.stroke();
+                }
+                
+                // Glowing accent
+                const glowGradient = ctx.createRadialGradient(600, 315, 0, 600, 315, 400);
+                glowGradient.addColorStop(0, 'rgba(66, 153, 225, 0.4)');
+                glowGradient.addColorStop(1, 'rgba(66, 153, 225, 0)');
+                ctx.fillStyle = glowGradient;
+                ctx.fillRect(0, 0, 1200, 630);
+                
+                // Code brackets with glow
+                ctx.shadowColor = '#4299e1';
+                ctx.shadowBlur = 30;
+                ctx.fillStyle = '#4299e1';
+                ctx.font = 'bold 120px monospace';
+                ctx.fillText('</', 100, 280);
+                ctx.fillText('/>', 950, 280);
+                
+                ctx.shadowBlur = 0;
+                
+                // Main text
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 64px Inter, sans-serif';
+                ctx.fillText("Kyle's Design Workshop", 240, 270);
+                
+                // Subtitle with typing effect look
+                ctx.fillStyle = '#4299e1';
+                ctx.font = '32px monospace';
+                ctx.fillText('> Building Digital Excellence_', 240, 340);
+                
+                // Feature pills
+                const pills = ['Web Design', 'Development', 'SEO', 'Hosting'];
+                ctx.font = '20px Inter, sans-serif';
+                pills.forEach((pill, index) => {
+                    const x = 240 + (index * 180);
+                    const y = 430;
+                    
+                    // Pill background
+                    ctx.fillStyle = 'rgba(66, 153, 225, 0.2)';
+                    ctx.roundRect(x - 10, y - 25, 150, 40, 20);
+                    ctx.fill();
+                    
+                    // Pill border
+                    ctx.strokeStyle = '#4299e1';
+                    ctx.lineWidth = 2;
+                    ctx.roundRect(x - 10, y - 25, 150, 40, 20);
+                    ctx.stroke();
+                    
+                    // Pill text
+                    ctx.fillStyle = '#90cdf4';
+                    ctx.fillText(pill, x + 20, y);
+                });
+                
+                // Website
+                ctx.fillStyle = '#cbd5e0';
+                ctx.font = '24px Inter, sans-serif';
+                ctx.fillText('www.kylesdesignworkshop.com', 380, 530);
+            }
+        }
+        
+        // Add roundRect polyfill for older browsers
+        if (!ctx.roundRect) {
+            ctx.roundRect = function(x, y, width, height, radius) {
+                ctx.beginPath();
+                ctx.moveTo(x + radius, y);
+                ctx.lineTo(x + width - radius, y);
+                ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+                ctx.lineTo(x + width, y + height - radius);
+                ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                ctx.lineTo(x + radius, y + height);
+                ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+                ctx.lineTo(x, y + radius);
+                ctx.quadraticCurveTo(x, y, x + radius, y);
+                ctx.closePath();
+            };
+        }
+        
+        function downloadCard() {
+            const link = document.createElement('a');
+            link.download = `twitter-card-design-${currentDesign}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Generate initial design
+        generateCard(1);
+    </script>
+</body>
+</html>
