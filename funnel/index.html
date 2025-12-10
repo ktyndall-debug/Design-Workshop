@@ -76,7 +76,6 @@
             pointer-events: none;
         }
         
-        /* Animated grid background */
         .hero-grid {
             position: absolute;
             top: 0;
@@ -212,12 +211,7 @@
             color: var(--success);
         }
         
-        /* ===== PROBLEM SECTION ===== */
-        .problems {
-            padding: 4rem 1.5rem;
-            background: white;
-        }
-        
+        /* ===== SECTIONS BASE ===== */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -243,6 +237,277 @@
             margin: 0 auto;
         }
         
+        /* ===== PRICING CALCULATOR ===== */
+        .calculator {
+            padding: 4rem 1.5rem;
+            background: white;
+        }
+        
+        .calculator .section-header h2 {
+            color: var(--dark);
+        }
+        
+        .calculator-wrapper {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .calculator-wrapper {
+                grid-template-columns: 1fr 320px;
+                align-items: start;
+            }
+        }
+        
+        .calculator-options {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .option-group {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        
+        .option-group-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .option-group-title i {
+            color: var(--primary);
+        }
+        
+        .option-cards {
+            display: grid;
+            gap: 0.75rem;
+        }
+        
+        .option-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .option-card:hover {
+            border-color: var(--primary);
+        }
+        
+        .option-card.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        .option-card.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .option-radio {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .option-card.selected .option-radio {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+        
+        .option-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .option-card.selected .option-radio::after {
+            opacity: 1;
+        }
+        
+        .option-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .option-card.selected .option-checkbox {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+        
+        .option-checkbox i {
+            color: white;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .option-card.selected .option-checkbox i {
+            opacity: 1;
+        }
+        
+        .option-details {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .option-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.125rem;
+        }
+        
+        .option-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .option-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        
+        /* Summary Card */
+        .summary-card {
+            background: var(--dark);
+            border-radius: 20px;
+            padding: 2rem;
+            color: white;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .summary-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .summary-title i {
+            color: var(--accent);
+        }
+        
+        .summary-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            min-height: 100px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-empty {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-total-label {
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+        
+        .summary-total-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .summary-note {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .summary-cta {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .summary-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== PROBLEM SECTION ===== */
+        .problems {
+            padding: 4rem 1.5rem;
+            background: var(--light);
+        }
+        
         .problems-grid {
             display: grid;
             gap: 1.5rem;
@@ -252,7 +517,7 @@
             display: flex;
             gap: 1rem;
             padding: 1.5rem;
-            background: var(--light);
+            background: white;
             border-radius: 16px;
             border-left: 4px solid var(--accent);
         }
@@ -282,83 +547,7 @@
             font-size: 0.95rem;
         }
         
-        /* ===== SOLUTION SECTION ===== */
-        .solution {
-            padding: 4rem 1.5rem;
-            background: linear-gradient(180deg, var(--light) 0%, white 100%);
-        }
-        
-        .solution-box {
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem 1.5rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            text-align: center;
-        }
-        
-        .solution-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-            font-size: 2rem;
-        }
-        
-        .solution-box h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        
-        .solution-box h2 span {
-            color: var(--primary);
-        }
-        
-        .solution-box > p {
-            font-size: 1.125rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .solution-features {
-            display: grid;
-            gap: 1rem;
-            text-align: left;
-            max-width: 400px;
-            margin: 0 auto 2rem;
-        }
-        
-        .solution-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            background: var(--light);
-            border-radius: 12px;
-        }
-        
-        .solution-feature i {
-            color: var(--success);
-            font-size: 1.125rem;
-        }
-        
-        .solution-feature span {
-            font-weight: 500;
-            color: var(--dark);
-        }
-        
-        /* ===== HOW IT WORKS ===== */
+        /* ===== PROCESS SECTION ===== */
         .process {
             padding: 4rem 1.5rem;
             background: var(--dark);
@@ -545,27 +734,19 @@
                 padding: 4rem 2rem;
             }
             
+            .calculator,
             .problems,
-            .solution,
             .process,
             .cta {
                 padding: 5rem 2rem;
             }
             
-            .solution-box {
-                padding: 3rem 2.5rem;
-            }
-            
             .steps {
                 max-width: 600px;
             }
-            
-            .step {
-                gap: 1.5rem;
-            }
         }
         
-        /* ===== PULSE ANIMATION FOR CTA ===== */
+        /* ===== PULSE ANIMATION ===== */
         .pulse {
             animation: pulse 2s infinite;
         }
@@ -593,7 +774,6 @@
             background: var(--primary);
             top: 10%;
             left: 5%;
-            animation-delay: 0s;
         }
         
         .float-2 {
@@ -643,10 +823,9 @@
             <p class="hero-subtitle">See exactly what your new website will look like — with zero risk and zero obligation. If you love it, we move forward. If not, no hard feelings.</p>
             
             <div class="hero-cta">
-                <!-- UPDATE THIS NUMBER: Replace XXXXXXXXXX with your Google Voice or TextNow number -->
-                <a href="sms:9103759512" class="btn btn-primary pulse">
-                    <i class="fas fa-comment"></i>
-                    Text Me Now
+                <a href="#calculator" class="btn btn-primary pulse">
+                    <i class="fas fa-calculator"></i>
+                    Build Your Package
                 </a>
             </div>
             
@@ -670,6 +849,146 @@
         </div>
     </section>
     
+    <!-- PRICING CALCULATOR -->
+    <section class="calculator" id="calculator">
+        <div class="container">
+            <div class="section-header">
+                <h2>Build Your Package</h2>
+                <p>Select the services you need and get an instant estimate. No commitment required.</p>
+            </div>
+            
+            <div class="calculator-wrapper">
+                <div class="calculator-options">
+                    <!-- Website Packages -->
+                    <div class="option-group">
+                        <div class="option-group-title">
+                            <i class="fas fa-laptop-code"></i>
+                            Website Package
+                        </div>
+                        <div class="option-cards" data-group="website">
+                            <div class="option-card" data-price="1500" data-name="Basic Website" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Basic Website</div>
+                                    <div class="option-desc">Up to 5 pages, responsive design, contact form</div>
+                                </div>
+                                <div class="option-price">$1,500</div>
+                            </div>
+                            <div class="option-card" data-price="2500" data-name="Professional Website" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Professional Website</div>
+                                    <div class="option-desc">Up to 10 pages, custom design, 1 year hosting included</div>
+                                </div>
+                                <div class="option-price">$2,500</div>
+                            </div>
+                            <div class="option-card" data-price="5500" data-name="Premium Website" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Premium Website</div>
+                                    <div class="option-desc">Unlimited pages, custom functionality, 3 years hosting</div>
+                                </div>
+                                <div class="option-price">$5,500</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hosting -->
+                    <div class="option-group">
+                        <div class="option-group-title">
+                            <i class="fas fa-server"></i>
+                            Website Hosting
+                        </div>
+                        <div class="option-cards" data-group="hosting">
+                            <div class="option-card" data-price="600" data-name="Annual Hosting" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Annual Hosting</div>
+                                    <div class="option-desc">Full management, updates, backups, SSL, 3 revisions/mo</div>
+                                </div>
+                                <div class="option-price">$499/yr</div>
+                            </div>
+                            <div class="option-card" data-price="50" data-name="Monthly Hosting" data-type="radio" data-monthly="true">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Monthly Hosting</div>
+                                    <div class="option-desc">Same benefits, pay as you go</div>
+                                </div>
+                                <div class="option-price">$49.99/mo</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Professional Media -->
+                    <div class="option-group">
+                        <div class="option-group-title">
+                            <i class="fas fa-camera"></i>
+                            Professional Media (Optional)
+                        </div>
+                        <div class="option-cards" data-group="media">
+                            <div class="option-card" data-price="175" data-name="Basic Headshots" data-type="checkbox">
+                                <div class="option-checkbox"><i class="fas fa-check"></i></div>
+                                <div class="option-details">
+                                    <div class="option-name">Basic Headshots</div>
+                                    <div class="option-desc">20 min session, 1 outfit, 3 retouched images</div>
+                                </div>
+                                <div class="option-price">$175</div>
+                            </div>
+                            <div class="option-card" data-price="295" data-name="Professional Headshots" data-type="checkbox">
+                                <div class="option-checkbox"><i class="fas fa-check"></i></div>
+                                <div class="option-details">
+                                    <div class="option-name">Professional Headshots</div>
+                                    <div class="option-desc">45 min session, 3 outfits, 6 retouched images</div>
+                                </div>
+                                <div class="option-price">$295</div>
+                            </div>
+                            <div class="option-card" data-price="1500" data-name="Promo Video - Basic" data-type="checkbox">
+                                <div class="option-checkbox"><i class="fas fa-check"></i></div>
+                                <div class="option-details">
+                                    <div class="option-name">Promo Video - Basic</div>
+                                    <div class="option-desc">60-90 sec video, half-day shoot, basic editing</div>
+                                </div>
+                                <div class="option-price">$1,500</div>
+                            </div>
+                            <div class="option-card" data-price="3500" data-name="Promo Video - Professional" data-type="checkbox">
+                                <div class="option-checkbox"><i class="fas fa-check"></i></div>
+                                <div class="option-details">
+                                    <div class="option-name">Promo Video - Professional</div>
+                                    <div class="option-desc">2-3 min video, full-day shoot, motion graphics, music</div>
+                                </div>
+                                <div class="option-price">$3,500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Summary Sidebar -->
+                <div class="summary-card">
+                    <div class="summary-title">
+                        <i class="fas fa-receipt"></i>
+                        Your Estimate
+                    </div>
+                    
+                    <div class="summary-items" id="summaryItems">
+                        <div class="summary-empty">Select services above to see your estimate</div>
+                    </div>
+                    
+                    <div class="summary-total">
+                        <span class="summary-total-label">Estimated Total</span>
+                        <span class="summary-total-price" id="totalPrice">$0</span>
+                    </div>
+                    
+                    <a href="sms:9103759512" class="summary-cta">
+                        <i class="fas fa-comment"></i>
+                        Text Me to Get Started
+                    </a>
+                    
+                    <p class="summary-note">Free mockup included — no obligation!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- PROBLEM SECTION -->
     <section class="problems">
         <div class="container">
@@ -685,7 +1004,7 @@
                     </div>
                     <div class="problem-content">
                         <h3>No Website At All</h3>
-                        <p>Customers can't find you online, and you're losing business to competitors who show up first.</p>
+                        <p>Customers can't find you online, and you're losing business to competitors.</p>
                     </div>
                 </div>
                 
@@ -695,7 +1014,7 @@
                     </div>
                     <div class="problem-content">
                         <h3>Outdated or Broken Site</h3>
-                        <p>Your current website looks old, loads slowly, or doesn't work on phones — turning visitors away.</p>
+                        <p>Your current website looks old or doesn't work on phones.</p>
                     </div>
                 </div>
                 
@@ -705,7 +1024,7 @@
                     </div>
                     <div class="problem-content">
                         <h3>No Idea Where to Start</h3>
-                        <p>Web design feels overwhelming and expensive. You don't know who to trust.</p>
+                        <p>Web design feels overwhelming. You don't know who to trust.</p>
                     </div>
                 </div>
                 
@@ -715,49 +1034,9 @@
                     </div>
                     <div class="problem-content">
                         <h3>Burned Before</h3>
-                        <p>You've paid for a website in the past and got something you hated — or nothing at all.</p>
+                        <p>You've paid for a website and got something you hated.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- SOLUTION SECTION -->
-    <section class="solution">
-        <div class="container">
-            <div class="solution-box">
-                <div class="solution-icon">
-                    <i class="fas fa-magic"></i>
-                </div>
-                
-                <h2>Here's My <span>Risk-Free</span> Promise</h2>
-                
-                <p>I'll design a custom mockup of your website — for free. You'll see exactly what you're getting before you spend a penny.</p>
-                
-                <div class="solution-features">
-                    <div class="solution-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Custom design tailored to your business</span>
-                    </div>
-                    <div class="solution-feature">
-                        <i class="fas fa-check"></i>
-                        <span>See it before you commit</span>
-                    </div>
-                    <div class="solution-feature">
-                        <i class="fas fa-check"></i>
-                        <span>No obligation — say no with no hard feelings</span>
-                    </div>
-                    <div class="solution-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Professional results at fair prices</span>
-                    </div>
-                </div>
-                
-                <!-- UPDATE THIS NUMBER -->
-                <a href="sms:9103759512" class="btn btn-primary">
-                    <i class="fas fa-comment"></i>
-                    Get Your Free Mockup
-                </a>
             </div>
         </div>
     </section>
@@ -775,7 +1054,7 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Send Me a Text</h3>
-                        <p>Just shoot me a quick message. Tell me your business name and what kind of website you're looking for.</p>
+                        <p>Tell me your business name and what you're looking for. Takes 2 minutes.</p>
                     </div>
                 </div>
                 
@@ -783,7 +1062,7 @@
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>I Design Your Free Mockup</h3>
-                        <p>Within a few days, you'll see a real preview of your website — not a generic template, but a custom design just for you.</p>
+                        <p>Within a few days, you'll see a real preview — not a generic template.</p>
                     </div>
                 </div>
                 
@@ -791,7 +1070,7 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>You Decide</h3>
-                        <p>Love it? We finalize the details and bring it to life. Not quite right? No problem — you walk away with zero cost.</p>
+                        <p>Love it? We finalize and build. Not quite right? No problem — zero cost.</p>
                     </div>
                 </div>
             </div>
@@ -805,7 +1084,6 @@
             <p>Send me a quick text and I'll get started on your free mockup — no strings attached.</p>
             
             <div class="cta-buttons">
-                <!-- UPDATE THIS NUMBER -->
                 <a href="sms:9103759512" class="btn btn-white">
                     <i class="fas fa-comment"></i>
                     Text Me Now
@@ -826,20 +1104,91 @@
         <p style="margin-top: 0.5rem;">A service by <a href="https://nviewmedia.com" target="_blank">NView Media</a></p>
     </footer>
     
-    <!-- Facebook Pixel (placeholder - add your pixel code) -->
-    <!-- 
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID');
-    fbq('track', 'PageView');
+        // Calculator Logic
+        const selections = {
+            website: null,
+            hosting: null,
+            media: []
+        };
+        
+        function updateSummary() {
+            const summaryItems = document.getElementById('summaryItems');
+            const totalPrice = document.getElementById('totalPrice');
+            let total = 0;
+            let items = [];
+            
+            // Add website
+            if (selections.website) {
+                items.push({ name: selections.website.name, price: selections.website.price });
+                total += selections.website.price;
+            }
+            
+            // Add hosting
+            if (selections.hosting) {
+                const suffix = selections.hosting.monthly ? '/mo' : '/yr';
+                items.push({ name: selections.hosting.name, price: selections.hosting.price, suffix: suffix });
+                total += selections.hosting.price;
+            }
+            
+            // Add media
+            selections.media.forEach(item => {
+                items.push({ name: item.name, price: item.price });
+                total += item.price;
+            });
+            
+            // Render
+            if (items.length === 0) {
+                summaryItems.innerHTML = '<div class="summary-empty">Select services above to see your estimate</div>';
+            } else {
+                summaryItems.innerHTML = items.map(item => `
+                    <div class="summary-item">
+                        <span>${item.name}</span>
+                        <span>$${item.price.toLocaleString()}${item.suffix || ''}</span>
+                    </div>
+                `).join('');
+            }
+            
+            totalPrice.textContent = '$' + total.toLocaleString();
+        }
+        
+        // Handle clicks
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const group = this.closest('.option-cards').dataset.group;
+                const type = this.dataset.type;
+                const price = parseInt(this.dataset.price);
+                const name = this.dataset.name;
+                const isMonthly = this.dataset.monthly === 'true';
+                
+                if (type === 'radio') {
+                    // Deselect others in group
+                    this.closest('.option-cards').querySelectorAll('.option-card').forEach(c => {
+                        c.classList.remove('selected');
+                    });
+                    
+                    // Select this one (or toggle off if already selected)
+                    if (selections[group] && selections[group].name === name) {
+                        selections[group] = null;
+                    } else {
+                        this.classList.add('selected');
+                        selections[group] = { name, price, monthly: isMonthly };
+                    }
+                } else if (type === 'checkbox') {
+                    // Toggle checkbox
+                    this.classList.toggle('selected');
+                    
+                    const index = selections.media.findIndex(m => m.name === name);
+                    if (index > -1) {
+                        selections.media.splice(index, 1);
+                    } else {
+                        selections.media.push({ name, price });
+                    }
+                }
+                
+                updateSummary();
+            });
+        });
     </script>
-    -->
 </body>
 </html>
