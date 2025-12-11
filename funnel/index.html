@@ -334,6 +334,106 @@
             padding: 0.5rem;
         }
         
+        .option-select:disabled {
+            background: #e2e8f0;
+            color: #94a3b8;
+            cursor: not-allowed;
+            border-color: #cbd5e1;
+        }
+        
+        .option-select:disabled + .hosting-note {
+            display: block;
+        }
+        
+        .hosting-note {
+            display: none;
+            font-size: 0.85rem;
+            color: var(--success);
+            margin-top: 0.5rem;
+            padding-left: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .hosting-note i {
+            margin-right: 0.25rem;
+        }
+        
+        /* Option Cards */
+        .option-cards {
+            display: grid;
+            gap: 0.75rem;
+        }
+        
+        .option-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .option-card:hover {
+            border-color: var(--primary);
+        }
+        
+        .option-card.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        .option-radio {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .option-card.selected .option-radio {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+        
+        .option-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .option-card.selected .option-radio::after {
+            opacity: 1;
+        }
+        
+        .option-details {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .option-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.125rem;
+        }
+        
+        .option-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        
         .option-desc {
             font-size: 0.85rem;
             color: var(--gray);
@@ -852,19 +952,36 @@
                             <i class="fas fa-laptop-code"></i>
                             Website Package
                         </div>
-                        <div class="select-wrapper">
-                            <select class="option-select" id="websiteSelect">
-                                <option value="">Select a package...</option>
-                                <option value="1500" data-name="Basic Website">Basic Website — $1,500</option>
-                                <option value="2500" data-name="Professional Website">Professional Website — $2,500</option>
-                                <option value="5500" data-name="Premium Website">Premium Website — $5,500</option>
-                            </select>
+                        <div class="option-cards" data-group="website">
+                            <div class="option-card" data-price="1500" data-name="Basic Website" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Basic Website</div>
+                                    <div class="option-desc">Up to 5 pages, responsive design, contact form</div>
+                                </div>
+                                <div class="option-price">$1,500</div>
+                            </div>
+                            <div class="option-card" data-price="2500" data-name="Professional Website" data-type="radio" data-includes-hosting="1">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Professional Website</div>
+                                    <div class="option-desc">Up to 10 pages, custom design, <strong>1 year hosting included</strong></div>
+                                </div>
+                                <div class="option-price">$2,500</div>
+                            </div>
+                            <div class="option-card" data-price="5500" data-name="Premium Website" data-type="radio" data-includes-hosting="3">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Premium Website</div>
+                                    <div class="option-desc">Unlimited pages, custom functionality, <strong>3 years hosting included</strong></div>
+                                </div>
+                                <div class="option-price">$5,500</div>
+                            </div>
                         </div>
-                        <p class="option-desc" id="websiteDesc">Choose a package to see details</p>
                     </div>
                     
                     <!-- Hosting -->
-                    <div class="option-group">
+                    <div class="option-group" id="hostingGroup">
                         <div class="option-group-title">
                             <i class="fas fa-server"></i>
                             Website Hosting
@@ -875,8 +992,9 @@
                                 <option value="499" data-name="Annual Hosting" data-suffix="/yr">Annual Hosting — $499/yr</option>
                                 <option value="50" data-name="Monthly Hosting" data-suffix="/mo">Monthly Hosting — $49.99/mo</option>
                             </select>
+                            <p class="hosting-note" id="hostingNote"><i class="fas fa-check-circle"></i> Hosting included with your package!</p>
                         </div>
-                        <p class="option-desc">Full management, updates, backups, SSL, 3 revisions/mo</p>
+                        <p class="option-desc" id="hostingDesc">Full management, updates, backups, SSL, 3 revisions/mo</p>
                     </div>
                     
                     <!-- Professional Media -->
@@ -1053,16 +1171,10 @@
             media: []
         };
         
-        const websiteDescriptions = {
-            '1500': 'Up to 5 pages, responsive design, contact form',
-            '2500': 'Up to 10 pages, custom design, 1 year hosting included',
-            '5500': 'Unlimited pages, custom functionality, 3 years hosting'
-        };
-        
         const industrySelect = document.getElementById('industrySelect');
-        const websiteSelect = document.getElementById('websiteSelect');
         const hostingSelect = document.getElementById('hostingSelect');
-        const websiteDesc = document.getElementById('websiteDesc');
+        const hostingNote = document.getElementById('hostingNote');
+        const hostingDesc = document.getElementById('hostingDesc');
         
         function buildSmsMessage() {
             let message = "Hi Kyle! I'm interested in web design services.";
@@ -1155,20 +1267,48 @@
             updateSummary();
         });
         
-        // Website select
-        websiteSelect.addEventListener('change', function() {
-            if (this.value) {
-                const option = this.options[this.selectedIndex];
-                selections.website = {
-                    name: option.dataset.name,
-                    price: parseInt(this.value)
-                };
-                websiteDesc.textContent = websiteDescriptions[this.value];
-            } else {
-                selections.website = null;
-                websiteDesc.textContent = 'Choose a package to see details';
-            }
-            updateSummary();
+        // Website package cards
+        document.querySelectorAll('.option-card[data-type="radio"]').forEach(function(card) {
+            card.addEventListener('click', function() {
+                const group = this.closest('.option-cards').dataset.group;
+                if (group !== 'website') return;
+                
+                const name = this.dataset.name;
+                const price = parseInt(this.dataset.price);
+                const includesHosting = this.dataset.includesHosting;
+                
+                // Deselect others in group
+                this.closest('.option-cards').querySelectorAll('.option-card').forEach(function(c) {
+                    c.classList.remove('selected');
+                });
+                
+                // Toggle selection
+                if (selections.website && selections.website.name === name) {
+                    selections.website = null;
+                    // Re-enable hosting
+                    hostingSelect.disabled = false;
+                    hostingNote.style.display = 'none';
+                    hostingDesc.style.display = 'block';
+                } else {
+                    this.classList.add('selected');
+                    selections.website = { name: name, price: price, includesHosting: includesHosting };
+                    
+                    // Handle hosting disable/enable
+                    if (includesHosting) {
+                        hostingSelect.disabled = true;
+                        hostingSelect.value = '';
+                        selections.hosting = null;
+                        hostingNote.style.display = 'block';
+                        hostingDesc.style.display = 'none';
+                    } else {
+                        hostingSelect.disabled = false;
+                        hostingNote.style.display = 'none';
+                        hostingDesc.style.display = 'block';
+                    }
+                }
+                
+                updateSummary();
+            });
         });
         
         // Hosting select
