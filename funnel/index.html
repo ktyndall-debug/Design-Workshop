@@ -900,7 +900,7 @@
                             Website Hosting
                         </div>
                         <div class="option-cards" data-group="hosting">
-                            <div class="option-card" data-price="600" data-name="Annual Hosting" data-type="radio">
+                            <div class="option-card" data-price="499" data-name="Annual Hosting" data-type="radio">
                                 <div class="option-radio"></div>
                                 <div class="option-details">
                                     <div class="option-name">Annual Hosting</div>
@@ -978,7 +978,7 @@
                         <span class="summary-total-price" id="totalPrice">$0</span>
                     </div>
                     
-                    <a href="sms:9103759512" class="summary-cta">
+                    <a href="sms:9103759512" class="summary-cta" id="summaryCta">
                         <i class="fas fa-comment"></i>
                         Text Me to Get Started
                     </a>
@@ -1084,7 +1084,7 @@
             <p>Send me a quick text and I'll get started on your free mockup — no strings attached.</p>
             
             <div class="cta-buttons">
-                <a href="sms:9103759512" class="btn btn-white">
+                <a href="sms:9103759512" class="btn btn-white" id="ctaButton">
                     <i class="fas fa-comment"></i>
                     Text Me Now
                 </a>
@@ -1112,6 +1112,57 @@
             media: []
         };
         
+        function buildSmsMessage() {
+            let message = "Hi Kyle! I'm interested in web design services.";
+            let hasSelections = false;
+            let total = 0;
+            
+            // Add website package
+            if (selections.website) {
+                message += "\n\nWebsite: " + selections.website.name + " ($" + selections.website.price.toLocaleString() + ")";
+                total += selections.website.price;
+                hasSelections = true;
+            }
+            
+            // Add hosting
+            if (selections.hosting) {
+                const suffix = selections.hosting.monthly ? '/mo' : '/yr';
+                message += "\nHosting: " + selections.hosting.name + " ($" + selections.hosting.price + suffix + ")";
+                total += selections.hosting.price;
+                hasSelections = true;
+            }
+            
+            // Add media add-ons
+            if (selections.media.length > 0) {
+                message += "\nAdd-ons:";
+                selections.media.forEach(function(item) {
+                    message += "\n  - " + item.name + " ($" + item.price.toLocaleString() + ")";
+                    total += item.price;
+                });
+                hasSelections = true;
+            }
+            
+            // Add total
+            if (hasSelections) {
+                message += "\n\nEstimated Total: $" + total.toLocaleString();
+                message += "\n\nCan I get a free mockup?";
+            } else {
+                message += " Can I get a free mockup?";
+            }
+            
+            return message;
+        }
+        
+        function updateSmsLinks() {
+            const message = buildSmsMessage();
+            const encodedMessage = encodeURIComponent(message);
+            const smsLink = "sms:9103759512?&body=" + encodedMessage;
+            
+            // Update all SMS links
+            document.getElementById('summaryCta').href = smsLink;
+            document.getElementById('ctaButton').href = smsLink;
+        }
+        
         function updateSummary() {
             const summaryItems = document.getElementById('summaryItems');
             const totalPrice = document.getElementById('totalPrice');
@@ -1132,7 +1183,7 @@
             }
             
             // Add media
-            selections.media.forEach(item => {
+            selections.media.forEach(function(item) {
                 items.push({ name: item.name, price: item.price });
                 total += item.price;
             });
@@ -1141,19 +1192,19 @@
             if (items.length === 0) {
                 summaryItems.innerHTML = '<div class="summary-empty">Select services above to see your estimate</div>';
             } else {
-                summaryItems.innerHTML = items.map(item => `
-                    <div class="summary-item">
-                        <span>${item.name}</span>
-                        <span>$${item.price.toLocaleString()}${item.suffix || ''}</span>
-                    </div>
-                `).join('');
+                summaryItems.innerHTML = items.map(function(item) {
+                    return '<div class="summary-item"><span>' + item.name + '</span><span>$' + item.price.toLocaleString() + (item.suffix || '') + '</span></div>';
+                }).join('');
             }
             
             totalPrice.textContent = '$' + total.toLocaleString();
+            
+            // Update SMS links with selections
+            updateSmsLinks();
         }
         
         // Handle clicks
-        document.querySelectorAll('.option-card').forEach(card => {
+        document.querySelectorAll('.option-card').forEach(function(card) {
             card.addEventListener('click', function() {
                 const group = this.closest('.option-cards').dataset.group;
                 const type = this.dataset.type;
@@ -1163,7 +1214,7 @@
                 
                 if (type === 'radio') {
                     // Deselect others in group
-                    this.closest('.option-cards').querySelectorAll('.option-card').forEach(c => {
+                    this.closest('.option-cards').querySelectorAll('.option-card').forEach(function(c) {
                         c.classList.remove('selected');
                     });
                     
@@ -1172,23 +1223,26 @@
                         selections[group] = null;
                     } else {
                         this.classList.add('selected');
-                        selections[group] = { name, price, monthly: isMonthly };
+                        selections[group] = { name: name, price: price, monthly: isMonthly };
                     }
                 } else if (type === 'checkbox') {
                     // Toggle checkbox
                     this.classList.toggle('selected');
                     
-                    const index = selections.media.findIndex(m => m.name === name);
+                    const index = selections.media.findIndex(function(m) { return m.name === name; });
                     if (index > -1) {
                         selections.media.splice(index, 1);
                     } else {
-                        selections.media.push({ name, price });
+                        selections.media.push({ name: name, price: price });
                     }
                 }
                 
                 updateSummary();
             });
         });
+        
+        // Initialize SMS links
+        updateSmsLinks();
     </script>
 </body>
 </html>
