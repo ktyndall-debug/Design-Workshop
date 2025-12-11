@@ -859,6 +859,83 @@
             
             <div class="calculator-wrapper">
                 <div class="calculator-options">
+                    <!-- Industry Selection -->
+                    <div class="option-group">
+                        <div class="option-group-title">
+                            <i class="fas fa-briefcase"></i>
+                            Your Industry
+                        </div>
+                        <div class="option-cards" data-group="industry">
+                            <div class="option-card" data-name="Restaurant / Food Service" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Restaurant / Food Service</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Retail / Shop" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Retail / Shop</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Professional Services" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Professional Services</div>
+                                    <div class="option-desc">Law, Accounting, Consulting, etc.</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Healthcare / Medical" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Healthcare / Medical</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Real Estate" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Real Estate</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Construction / Contractor" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Construction / Contractor</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Beauty / Salon / Spa" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Beauty / Salon / Spa</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Automotive" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Automotive</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Fitness / Gym" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Fitness / Gym</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Non-Profit" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Non-Profit</div>
+                                </div>
+                            </div>
+                            <div class="option-card" data-name="Other" data-type="radio">
+                                <div class="option-radio"></div>
+                                <div class="option-details">
+                                    <div class="option-name">Other</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Website Packages -->
                     <div class="option-group">
                         <div class="option-group-title">
@@ -1107,6 +1184,7 @@
     <script>
         // Calculator Logic
         const selections = {
+            industry: null,
             website: null,
             hosting: null,
             media: []
@@ -1114,12 +1192,17 @@
         
         function buildSmsMessage() {
             let message = "Hi Kyle! I'm interested in web design services.";
+            
+            // Add industry
+            if (selections.industry) {
+                message += "\n\nIndustry: " + selections.industry;
+            }
             let hasSelections = false;
             let total = 0;
             
             // Add website package
             if (selections.website) {
-                message += "\n\nWebsite: " + selections.website.name + " ($" + selections.website.price.toLocaleString() + ")";
+                message += (selections.industry ? "\n" : "\n\n") + "Website: " + selections.website.name + " ($" + selections.website.price.toLocaleString() + ")";
                 total += selections.website.price;
                 hasSelections = true;
             }
@@ -1143,8 +1226,10 @@
             }
             
             // Add total
-            if (hasSelections) {
-                message += "\n\nEstimated Total: $" + total.toLocaleString();
+            if (hasSelections || selections.industry) {
+                if (total > 0) {
+                    message += "\n\nEstimated Total: $" + total.toLocaleString();
+                }
                 message += "\n\nCan I get a free mockup?";
             } else {
                 message += " Can I get a free mockup?";
@@ -1218,12 +1303,22 @@
                         c.classList.remove('selected');
                     });
                     
-                    // Select this one (or toggle off if already selected)
-                    if (selections[group] && selections[group].name === name) {
-                        selections[group] = null;
+                    // Handle industry separately (no price)
+                    if (group === 'industry') {
+                        if (selections.industry === name) {
+                            selections.industry = null;
+                        } else {
+                            this.classList.add('selected');
+                            selections.industry = name;
+                        }
                     } else {
-                        this.classList.add('selected');
-                        selections[group] = { name: name, price: price, monthly: isMonthly };
+                        // Select this one (or toggle off if already selected)
+                        if (selections[group] && selections[group].name === name) {
+                            selections[group] = null;
+                        } else {
+                            this.classList.add('selected');
+                            selections[group] = { name: name, price: price, monthly: isMonthly };
+                        }
                     }
                 } else if (type === 'checkbox') {
                     // Toggle checkbox
