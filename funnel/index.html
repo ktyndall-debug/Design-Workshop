@@ -262,7 +262,7 @@
         .calculator-options {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         
         .option-group {
@@ -273,10 +273,10 @@
         
         .option-group-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -286,117 +286,129 @@
             color: var(--primary);
         }
         
-        .option-cards {
-            display: grid;
-            gap: 0.75rem;
+        /* Dropdown Styles */
+        .select-wrapper {
+            position: relative;
         }
         
-        .option-card {
+        .select-wrapper::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            pointer-events: none;
+        }
+        
+        .option-select {
+            width: 100%;
+            padding: 1rem 2.5rem 1rem 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--dark);
             background: white;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
-            padding: 1rem 1.25rem;
             cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .option-card:hover {
-            border-color: var(--primary);
-        }
-        
-        .option-card.selected {
-            border-color: var(--primary);
-            background: rgba(99, 102, 241, 0.05);
-        }
-        
-        .option-card.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .option-radio {
-            width: 22px;
-            height: 22px;
-            border: 2px solid #cbd5e1;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
             transition: all 0.2s ease;
         }
         
-        .option-card.selected .option-radio {
+        .option-select:hover {
             border-color: var(--primary);
-            background: var(--primary);
         }
         
-        .option-radio::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-        
-        .option-card.selected .option-radio::after {
-            opacity: 1;
-        }
-        
-        .option-checkbox {
-            width: 22px;
-            height: 22px;
-            border: 2px solid #cbd5e1;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-        }
-        
-        .option-card.selected .option-checkbox {
+        .option-select:focus {
+            outline: none;
             border-color: var(--primary);
-            background: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
         
-        .option-checkbox i {
-            color: white;
-            font-size: 0.75rem;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-        
-        .option-card.selected .option-checkbox i {
-            opacity: 1;
-        }
-        
-        .option-details {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .option-name {
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 0.125rem;
+        .option-select option {
+            padding: 0.5rem;
         }
         
         .option-desc {
             font-size: 0.85rem;
             color: var(--gray);
+            margin-top: 0.5rem;
+            padding-left: 0.25rem;
         }
         
-        .option-price {
+        /* Checkbox group for media */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .checkbox-item:hover {
+            border-color: var(--primary);
+        }
+        
+        .checkbox-item.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        .checkbox-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .checkbox-item.selected .checkbox-box {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+        
+        .checkbox-box i {
+            color: white;
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .checkbox-item.selected .checkbox-box i {
+            opacity: 1;
+        }
+        
+        .checkbox-label {
+            flex: 1;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        
+        .checkbox-price {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             color: var(--primary);
-            white-space: nowrap;
+            font-size: 0.95rem;
         }
         
         /* Summary Card */
@@ -428,7 +440,7 @@
             flex-direction: column;
             gap: 0.75rem;
             margin-bottom: 1.5rem;
-            min-height: 100px;
+            min-height: 80px;
         }
         
         .summary-item {
@@ -437,7 +449,7 @@
             align-items: center;
             padding: 0.5rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         
         .summary-item:last-child {
@@ -446,9 +458,9 @@
         
         .summary-empty {
             color: #94a3b8;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-align: center;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
         }
         
         .summary-total {
@@ -467,7 +479,7 @@
         
         .summary-total-price {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--accent);
         }
@@ -701,25 +713,13 @@
         
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         /* ===== RESPONSIVE ===== */
@@ -727,23 +727,16 @@
             .problems-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .checkbox-group {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (min-width: 768px) {
-            .hero {
-                padding: 4rem 2rem;
-            }
-            
-            .calculator,
-            .problems,
-            .process,
-            .cta {
-                padding: 5rem 2rem;
-            }
-            
-            .steps {
-                max-width: 600px;
-            }
+            .hero { padding: 4rem 2rem; }
+            .calculator, .problems, .process, .cta { padding: 5rem 2rem; }
+            .steps { max-width: 600px; }
         }
         
         /* ===== PULSE ANIMATION ===== */
@@ -752,12 +745,8 @@
         }
         
         @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 30px rgba(255, 107, 107, 0.6), 0 0 0 10px rgba(255, 107, 107, 0.1);
-            }
+            0%, 100% { box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(255, 107, 107, 0.6), 0 0 0 10px rgba(255, 107, 107, 0.1); }
         }
         
         /* Floating elements */
@@ -768,39 +757,13 @@
             animation: float 6s ease-in-out infinite;
         }
         
-        .float-1 {
-            width: 100px;
-            height: 100px;
-            background: var(--primary);
-            top: 10%;
-            left: 5%;
-        }
-        
-        .float-2 {
-            width: 60px;
-            height: 60px;
-            background: var(--accent);
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-        
-        .float-3 {
-            width: 80px;
-            height: 80px;
-            background: #8b5cf6;
-            bottom: 20%;
-            left: 10%;
-            animation-delay: 4s;
-        }
+        .float-1 { width: 100px; height: 100px; background: var(--primary); top: 10%; left: 5%; }
+        .float-2 { width: 60px; height: 60px; background: var(--accent); top: 60%; right: 10%; animation-delay: 2s; }
+        .float-3 { width: 80px; height: 80px; background: #8b5cf6; bottom: 20%; left: 10%; animation-delay: 4s; }
         
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
         }
     </style>
 </head>
@@ -859,115 +822,45 @@
             
             <div class="calculator-wrapper">
                 <div class="calculator-options">
-                    <!-- Industry Selection -->
+                    <!-- Industry -->
                     <div class="option-group">
                         <div class="option-group-title">
                             <i class="fas fa-briefcase"></i>
                             Your Industry
                         </div>
-                        <div class="option-cards" data-group="industry">
-                            <div class="option-card" data-name="Restaurant / Food Service" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Restaurant / Food Service</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Retail / Shop" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Retail / Shop</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Professional Services" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Professional Services</div>
-                                    <div class="option-desc">Law, Accounting, Consulting, etc.</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Healthcare / Medical" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Healthcare / Medical</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Real Estate" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Real Estate</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Construction / Contractor" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Construction / Contractor</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Beauty / Salon / Spa" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Beauty / Salon / Spa</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Automotive" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Automotive</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Fitness / Gym" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Fitness / Gym</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Non-Profit" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Non-Profit</div>
-                                </div>
-                            </div>
-                            <div class="option-card" data-name="Other" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Other</div>
-                                </div>
-                            </div>
+                        <div class="select-wrapper">
+                            <select class="option-select" id="industrySelect">
+                                <option value="">Select your industry...</option>
+                                <option value="Restaurant / Food Service">Restaurant / Food Service</option>
+                                <option value="Retail / Shop">Retail / Shop</option>
+                                <option value="Professional Services">Professional Services (Law, Accounting, etc.)</option>
+                                <option value="Healthcare / Medical">Healthcare / Medical</option>
+                                <option value="Real Estate">Real Estate</option>
+                                <option value="Construction / Contractor">Construction / Contractor</option>
+                                <option value="Beauty / Salon / Spa">Beauty / Salon / Spa</option>
+                                <option value="Automotive">Automotive</option>
+                                <option value="Fitness / Gym">Fitness / Gym</option>
+                                <option value="Non-Profit">Non-Profit</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
                     </div>
                     
-                    <!-- Website Packages -->
+                    <!-- Website Package -->
                     <div class="option-group">
                         <div class="option-group-title">
                             <i class="fas fa-laptop-code"></i>
                             Website Package
                         </div>
-                        <div class="option-cards" data-group="website">
-                            <div class="option-card" data-price="1500" data-name="Basic Website" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Basic Website</div>
-                                    <div class="option-desc">Up to 5 pages, responsive design, contact form</div>
-                                </div>
-                                <div class="option-price">$1,500</div>
-                            </div>
-                            <div class="option-card" data-price="2500" data-name="Professional Website" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Professional Website</div>
-                                    <div class="option-desc">Up to 10 pages, custom design, 1 year hosting included</div>
-                                </div>
-                                <div class="option-price">$2,500</div>
-                            </div>
-                            <div class="option-card" data-price="5500" data-name="Premium Website" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Premium Website</div>
-                                    <div class="option-desc">Unlimited pages, custom functionality, 3 years hosting</div>
-                                </div>
-                                <div class="option-price">$5,500</div>
-                            </div>
+                        <div class="select-wrapper">
+                            <select class="option-select" id="websiteSelect">
+                                <option value="">Select a package...</option>
+                                <option value="1500" data-name="Basic Website">Basic Website — $1,500</option>
+                                <option value="2500" data-name="Professional Website">Professional Website — $2,500</option>
+                                <option value="5500" data-name="Premium Website">Premium Website — $5,500</option>
+                            </select>
                         </div>
+                        <p class="option-desc" id="websiteDesc">Choose a package to see details</p>
                     </div>
                     
                     <!-- Hosting -->
@@ -976,24 +869,14 @@
                             <i class="fas fa-server"></i>
                             Website Hosting
                         </div>
-                        <div class="option-cards" data-group="hosting">
-                            <div class="option-card" data-price="499" data-name="Annual Hosting" data-type="radio">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Annual Hosting</div>
-                                    <div class="option-desc">Full management, updates, backups, SSL, 3 revisions/mo</div>
-                                </div>
-                                <div class="option-price">$499/yr</div>
-                            </div>
-                            <div class="option-card" data-price="50" data-name="Monthly Hosting" data-type="radio" data-monthly="true">
-                                <div class="option-radio"></div>
-                                <div class="option-details">
-                                    <div class="option-name">Monthly Hosting</div>
-                                    <div class="option-desc">Same benefits, pay as you go</div>
-                                </div>
-                                <div class="option-price">$49.99/mo</div>
-                            </div>
+                        <div class="select-wrapper">
+                            <select class="option-select" id="hostingSelect">
+                                <option value="">Select hosting plan...</option>
+                                <option value="499" data-name="Annual Hosting" data-suffix="/yr">Annual Hosting — $499/yr</option>
+                                <option value="50" data-name="Monthly Hosting" data-suffix="/mo">Monthly Hosting — $49.99/mo</option>
+                            </select>
                         </div>
+                        <p class="option-desc">Full management, updates, backups, SSL, 3 revisions/mo</p>
                     </div>
                     
                     <!-- Professional Media -->
@@ -1002,38 +885,26 @@
                             <i class="fas fa-camera"></i>
                             Professional Media (Optional)
                         </div>
-                        <div class="option-cards" data-group="media">
-                            <div class="option-card" data-price="175" data-name="Basic Headshots" data-type="checkbox">
-                                <div class="option-checkbox"><i class="fas fa-check"></i></div>
-                                <div class="option-details">
-                                    <div class="option-name">Basic Headshots</div>
-                                    <div class="option-desc">20 min session, 1 outfit, 3 retouched images</div>
-                                </div>
-                                <div class="option-price">$175</div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item" data-price="175" data-name="Basic Headshots">
+                                <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                                <span class="checkbox-label">Basic Headshots</span>
+                                <span class="checkbox-price">$175</span>
                             </div>
-                            <div class="option-card" data-price="295" data-name="Professional Headshots" data-type="checkbox">
-                                <div class="option-checkbox"><i class="fas fa-check"></i></div>
-                                <div class="option-details">
-                                    <div class="option-name">Professional Headshots</div>
-                                    <div class="option-desc">45 min session, 3 outfits, 6 retouched images</div>
-                                </div>
-                                <div class="option-price">$295</div>
+                            <div class="checkbox-item" data-price="295" data-name="Professional Headshots">
+                                <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                                <span class="checkbox-label">Pro Headshots</span>
+                                <span class="checkbox-price">$295</span>
                             </div>
-                            <div class="option-card" data-price="1500" data-name="Promo Video - Basic" data-type="checkbox">
-                                <div class="option-checkbox"><i class="fas fa-check"></i></div>
-                                <div class="option-details">
-                                    <div class="option-name">Promo Video - Basic</div>
-                                    <div class="option-desc">60-90 sec video, half-day shoot, basic editing</div>
-                                </div>
-                                <div class="option-price">$1,500</div>
+                            <div class="checkbox-item" data-price="1500" data-name="Promo Video - Basic">
+                                <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                                <span class="checkbox-label">Basic Promo Video</span>
+                                <span class="checkbox-price">$1,500</span>
                             </div>
-                            <div class="option-card" data-price="3500" data-name="Promo Video - Professional" data-type="checkbox">
-                                <div class="option-checkbox"><i class="fas fa-check"></i></div>
-                                <div class="option-details">
-                                    <div class="option-name">Promo Video - Professional</div>
-                                    <div class="option-desc">2-3 min video, full-day shoot, motion graphics, music</div>
-                                </div>
-                                <div class="option-price">$3,500</div>
+                            <div class="checkbox-item" data-price="3500" data-name="Promo Video - Professional">
+                                <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                                <span class="checkbox-label">Pro Promo Video</span>
+                                <span class="checkbox-price">$3,500</span>
                             </div>
                         </div>
                     </div>
@@ -1076,9 +947,7 @@
             
             <div class="problems-grid">
                 <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-ghost"></i>
-                    </div>
+                    <div class="problem-icon"><i class="fas fa-ghost"></i></div>
                     <div class="problem-content">
                         <h3>No Website At All</h3>
                         <p>Customers can't find you online, and you're losing business to competitors.</p>
@@ -1086,9 +955,7 @@
                 </div>
                 
                 <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
+                    <div class="problem-icon"><i class="fas fa-mobile-alt"></i></div>
                     <div class="problem-content">
                         <h3>Outdated or Broken Site</h3>
                         <p>Your current website looks old or doesn't work on phones.</p>
@@ -1096,9 +963,7 @@
                 </div>
                 
                 <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-question-circle"></i>
-                    </div>
+                    <div class="problem-icon"><i class="fas fa-question-circle"></i></div>
                     <div class="problem-content">
                         <h3>No Idea Where to Start</h3>
                         <p>Web design feels overwhelming. You don't know who to trust.</p>
@@ -1106,9 +971,7 @@
                 </div>
                 
                 <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
+                    <div class="problem-icon"><i class="fas fa-dollar-sign"></i></div>
                     <div class="problem-content">
                         <h3>Burned Before</h3>
                         <p>You've paid for a website and got something you hated.</p>
@@ -1190,32 +1053,39 @@
             media: []
         };
         
+        const websiteDescriptions = {
+            '1500': 'Up to 5 pages, responsive design, contact form',
+            '2500': 'Up to 10 pages, custom design, 1 year hosting included',
+            '5500': 'Unlimited pages, custom functionality, 3 years hosting'
+        };
+        
+        const industrySelect = document.getElementById('industrySelect');
+        const websiteSelect = document.getElementById('websiteSelect');
+        const hostingSelect = document.getElementById('hostingSelect');
+        const websiteDesc = document.getElementById('websiteDesc');
+        
         function buildSmsMessage() {
             let message = "Hi Kyle! I'm interested in web design services.";
             
-            // Add industry
             if (selections.industry) {
                 message += "\n\nIndustry: " + selections.industry;
             }
+            
             let hasSelections = false;
             let total = 0;
             
-            // Add website package
             if (selections.website) {
                 message += (selections.industry ? "\n" : "\n\n") + "Website: " + selections.website.name + " ($" + selections.website.price.toLocaleString() + ")";
                 total += selections.website.price;
                 hasSelections = true;
             }
             
-            // Add hosting
             if (selections.hosting) {
-                const suffix = selections.hosting.monthly ? '/mo' : '/yr';
-                message += "\nHosting: " + selections.hosting.name + " ($" + selections.hosting.price + suffix + ")";
+                message += "\nHosting: " + selections.hosting.name + " ($" + selections.hosting.price + selections.hosting.suffix + ")";
                 total += selections.hosting.price;
                 hasSelections = true;
             }
             
-            // Add media add-ons
             if (selections.media.length > 0) {
                 message += "\nAdd-ons:";
                 selections.media.forEach(function(item) {
@@ -1225,7 +1095,6 @@
                 hasSelections = true;
             }
             
-            // Add total
             if (hasSelections || selections.industry) {
                 if (total > 0) {
                     message += "\n\nEstimated Total: $" + total.toLocaleString();
@@ -1243,7 +1112,6 @@
             const encodedMessage = encodeURIComponent(message);
             const smsLink = "sms:9103759512?&body=" + encodedMessage;
             
-            // Update all SMS links
             document.getElementById('summaryCta').href = smsLink;
             document.getElementById('ctaButton').href = smsLink;
         }
@@ -1254,26 +1122,21 @@
             let total = 0;
             let items = [];
             
-            // Add website
             if (selections.website) {
                 items.push({ name: selections.website.name, price: selections.website.price });
                 total += selections.website.price;
             }
             
-            // Add hosting
             if (selections.hosting) {
-                const suffix = selections.hosting.monthly ? '/mo' : '/yr';
-                items.push({ name: selections.hosting.name, price: selections.hosting.price, suffix: suffix });
+                items.push({ name: selections.hosting.name, price: selections.hosting.price, suffix: selections.hosting.suffix });
                 total += selections.hosting.price;
             }
             
-            // Add media
             selections.media.forEach(function(item) {
                 items.push({ name: item.name, price: item.price });
                 total += item.price;
             });
             
-            // Render
             if (items.length === 0) {
                 summaryItems.innerHTML = '<div class="summary-empty">Select services above to see your estimate</div>';
             } else {
@@ -1283,60 +1146,66 @@
             }
             
             totalPrice.textContent = '$' + total.toLocaleString();
-            
-            // Update SMS links with selections
             updateSmsLinks();
         }
         
-        // Handle clicks
-        document.querySelectorAll('.option-card').forEach(function(card) {
-            card.addEventListener('click', function() {
-                const group = this.closest('.option-cards').dataset.group;
-                const type = this.dataset.type;
-                const price = parseInt(this.dataset.price);
-                const name = this.dataset.name;
-                const isMonthly = this.dataset.monthly === 'true';
+        // Industry select
+        industrySelect.addEventListener('change', function() {
+            selections.industry = this.value || null;
+            updateSummary();
+        });
+        
+        // Website select
+        websiteSelect.addEventListener('change', function() {
+            if (this.value) {
+                const option = this.options[this.selectedIndex];
+                selections.website = {
+                    name: option.dataset.name,
+                    price: parseInt(this.value)
+                };
+                websiteDesc.textContent = websiteDescriptions[this.value];
+            } else {
+                selections.website = null;
+                websiteDesc.textContent = 'Choose a package to see details';
+            }
+            updateSummary();
+        });
+        
+        // Hosting select
+        hostingSelect.addEventListener('change', function() {
+            if (this.value) {
+                const option = this.options[this.selectedIndex];
+                selections.hosting = {
+                    name: option.dataset.name,
+                    price: parseInt(this.value),
+                    suffix: option.dataset.suffix
+                };
+            } else {
+                selections.hosting = null;
+            }
+            updateSummary();
+        });
+        
+        // Media checkboxes
+        document.querySelectorAll('.checkbox-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                this.classList.toggle('selected');
                 
-                if (type === 'radio') {
-                    // Deselect others in group
-                    this.closest('.option-cards').querySelectorAll('.option-card').forEach(function(c) {
-                        c.classList.remove('selected');
-                    });
-                    
-                    // Handle industry separately (no price)
-                    if (group === 'industry') {
-                        if (selections.industry === name) {
-                            selections.industry = null;
-                        } else {
-                            this.classList.add('selected');
-                            selections.industry = name;
-                        }
-                    } else {
-                        // Select this one (or toggle off if already selected)
-                        if (selections[group] && selections[group].name === name) {
-                            selections[group] = null;
-                        } else {
-                            this.classList.add('selected');
-                            selections[group] = { name: name, price: price, monthly: isMonthly };
-                        }
-                    }
-                } else if (type === 'checkbox') {
-                    // Toggle checkbox
-                    this.classList.toggle('selected');
-                    
-                    const index = selections.media.findIndex(function(m) { return m.name === name; });
-                    if (index > -1) {
-                        selections.media.splice(index, 1);
-                    } else {
-                        selections.media.push({ name: name, price: price });
-                    }
+                const name = this.dataset.name;
+                const price = parseInt(this.dataset.price);
+                
+                const index = selections.media.findIndex(function(m) { return m.name === name; });
+                if (index > -1) {
+                    selections.media.splice(index, 1);
+                } else {
+                    selections.media.push({ name: name, price: price });
                 }
                 
                 updateSummary();
             });
         });
         
-        // Initialize SMS links
+        // Initialize
         updateSmsLinks();
     </script>
 </body>
