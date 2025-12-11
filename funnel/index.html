@@ -452,10 +452,10 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 0.75rem 1rem;
+            padding: 1rem 1.25rem;
             background: white;
             border: 2px solid #e2e8f0;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -470,10 +470,10 @@
         }
         
         .checkbox-box {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border: 2px solid #cbd5e1;
-            border-radius: 5px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -497,11 +497,23 @@
             opacity: 1;
         }
         
-        .checkbox-label {
+        .checkbox-details {
             flex: 1;
-            font-weight: 500;
+            min-width: 0;
+        }
+        
+        .checkbox-label {
+            display: block;
+            font-weight: 600;
             color: var(--dark);
             font-size: 0.95rem;
+        }
+        
+        .checkbox-desc {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 0.125rem;
         }
         
         .checkbox-price {
@@ -509,6 +521,7 @@
             font-weight: 700;
             color: var(--primary);
             font-size: 0.95rem;
+            white-space: nowrap;
         }
         
         /* Summary Card */
@@ -827,10 +840,6 @@
             .problems-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .checkbox-group {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
         
         @media (min-width: 768px) {
@@ -1006,22 +1015,34 @@
                         <div class="checkbox-group">
                             <div class="checkbox-item" data-price="175" data-name="Basic Headshots">
                                 <div class="checkbox-box"><i class="fas fa-check"></i></div>
-                                <span class="checkbox-label">Basic Headshots</span>
+                                <div class="checkbox-details">
+                                    <span class="checkbox-label">Basic Headshots</span>
+                                    <span class="checkbox-desc">20 min session, 1 outfit, 3 retouched images</span>
+                                </div>
                                 <span class="checkbox-price">$175</span>
                             </div>
                             <div class="checkbox-item" data-price="295" data-name="Professional Headshots">
                                 <div class="checkbox-box"><i class="fas fa-check"></i></div>
-                                <span class="checkbox-label">Pro Headshots</span>
+                                <div class="checkbox-details">
+                                    <span class="checkbox-label">Professional Headshots</span>
+                                    <span class="checkbox-desc">45 min session, 3 outfits, 6 retouched images</span>
+                                </div>
                                 <span class="checkbox-price">$295</span>
                             </div>
                             <div class="checkbox-item" data-price="1500" data-name="Promo Video - Basic">
                                 <div class="checkbox-box"><i class="fas fa-check"></i></div>
-                                <span class="checkbox-label">Basic Promo Video</span>
+                                <div class="checkbox-details">
+                                    <span class="checkbox-label">Promo Video - Basic</span>
+                                    <span class="checkbox-desc">60-90 sec video, half-day shoot, basic editing</span>
+                                </div>
                                 <span class="checkbox-price">$1,500</span>
                             </div>
                             <div class="checkbox-item" data-price="3500" data-name="Promo Video - Professional">
                                 <div class="checkbox-box"><i class="fas fa-check"></i></div>
-                                <span class="checkbox-label">Pro Promo Video</span>
+                                <div class="checkbox-details">
+                                    <span class="checkbox-label">Promo Video - Professional</span>
+                                    <span class="checkbox-desc">2-3 min video, full-day shoot, motion graphics, music</span>
+                                </div>
                                 <span class="checkbox-price">$3,500</span>
                             </div>
                         </div>
